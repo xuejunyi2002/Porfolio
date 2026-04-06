@@ -1,104 +1,195 @@
 /* ============================================================
-   NAV — scroll state
+   CUSTOM CURSOR
    ============================================================ */
-const nav = document.getElementById('nav');
+const cursor   = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+if (window.matchMedia('(pointer: fine)').matches && cursor && follower) {
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+  });
+
+  (function animateFollower() {
+    followerX += (mouseX - followerX - 17) * 0.11;
+    followerY += (mouseY - followerY - 17) * 0.11;
+    follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+    requestAnimationFrame(animateFollower);
+  })();
+
+  // Scale up on interactive elements
+  document.querySelectorAll('a, button, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform += ' scale(2)';
+      follower.style.opacity = '0.15';
+      follower.style.borderColor = 'var(--coral)';
+    });
+    el.addEventListener('mouseleave', () => {
+      follower.style.opacity = '0.5';
+      follower.style.borderColor = '';
+    });
+  });
+}
+
+/* ============================================================
+   HEADER — compact on scroll
+   ============================================================ */
+const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  header.classList.toggle('compact', window.scrollY > 80);
 }, { passive: true });
 
 /* ============================================================
    HAMBURGER — mobile menu
    ============================================================ */
 const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+const mobileNav = document.getElementById('mobileNav');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-});
-
-// Close on link click
-document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileNav.setAttribute('aria-hidden', String(!isOpen));
   });
-});
 
-// Close on outside click
-document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
-  }
-});
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', e => {
+    if (!header.contains(e.target) && !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 /* ============================================================
    SCROLL REVEAL
    ============================================================ */
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ============================================================
-   CONTACT FORM — client-side feedback
+   PARALLAX DOODLES
+   ============================================================ */
+const parallaxEls = document.querySelectorAll('.parallax');
+
+function updateParallax() {
+  const scrollY = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.speed) || 0.05;
+    el.style.transform = `translateY(${scrollY * speed}px)`;
+  });
+}
+
+if (parallaxEls.length) {
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+}
+
+/* ============================================================
+   CURSOR-FOLLOWING DOODLES (hero only)
+   ============================================================ */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const floatingDoodles = document.querySelectorAll('.hero .doodle');
+  let heroRect = null;
+
+  const hero = document.getElementById('home');
+  if (hero) {
+    heroRect = hero.getBoundingClientRect();
+    window.addEventListener('resize', () => { heroRect = hero.getBoundingClientRect(); });
+
+    document.addEventListener('mousemove', e => {
+      if (!heroRect) return;
+      const cx = heroRect.width  / 2;
+      const cy = heroRect.height / 2;
+      const dx = (e.clientX - cx) / cx;
+      const dy = (e.clientY - cy) / cy;
+
+      floatingDoodles.forEach((d, i) => {
+        const factor = (i % 2 === 0 ? 1 : -1) * 6;
+        d.style.transform = `translate(${dx * factor}px, ${dy * factor}px)`;
+      });
+    });
+  }
+}
+
+/* ============================================================
+   ACTIVE NAV LINK
+   ============================================================ */
+const sections  = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nav-link');
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === `#${entry.target.id}`
+        );
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+/* ============================================================
+   CONTACT FORM
    ============================================================ */
 const form = document.getElementById('contactForm');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btnText = form.querySelector('.form-submit span');
+    if (!btnText) return;
+    const original = btnText.textContent;
 
-  const btn = form.querySelector('button[type="submit"]');
-  const original = btn.textContent;
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
+    btnText.textContent = 'Sending…';
+    form.querySelector('.form-submit').disabled = true;
 
-  // Replace this timeout with your actual form submission (Formspree, EmailJS, etc.)
-  setTimeout(() => {
-    btn.textContent = 'Sent! I\'ll be in touch soon.';
-    btn.style.background = '#10b981';
-    btn.style.borderColor = '#10b981';
-    form.reset();
-
+    // Swap this with Formspree / EmailJS for real sending
     setTimeout(() => {
-      btn.textContent = original;
-      btn.style.background = '';
-      btn.style.borderColor = '';
-      btn.disabled = false;
-    }, 4000);
-  }, 1200);
-});
+      btnText.textContent = 'Sent! Talk soon ✦';
+      form.reset();
+      setTimeout(() => {
+        btnText.textContent = original;
+        form.querySelector('.form-submit').disabled = false;
+      }, 3500);
+    }, 1000);
+  });
+}
 
 /* ============================================================
-   SMOOTH ACTIVE NAV (highlight current section)
+   PROJECT CARD HOVER — image shift
    ============================================================ */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.style.color = link.getAttribute('href') === `#${entry.target.id}`
-            ? 'var(--text)'
-            : '';
-        });
-      }
-    });
-  },
-  { rootMargin: '-40% 0px -40% 0px' }
-);
-
-sections.forEach(s => sectionObserver.observe(s));
+document.querySelectorAll('.project-card').forEach(card => {
+  const img = card.querySelector('.project-img');
+  if (!img) return;
+  card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.03)'; });
+  card.addEventListener('mouseleave', () => { img.style.transform = ''; });
+});

@@ -3,237 +3,397 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ella Xue — Portfolio</title>
+  <title>Ella Xue — Digital Project Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo">EX</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <!-- Custom Cursor -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-follower" aria-hidden="true"></div>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <ul>
-      <li><a href="#about" class="mobile-link">About</a></li>
-      <li><a href="#work" class="mobile-link">Work</a></li>
-      <li><a href="#skills" class="mobile-link">Skills</a></li>
-      <li><a href="#contact" class="mobile-link">Contact</a></li>
-    </ul>
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header id="header">
+    <div class="header-inner">
+
+      <a href="#home" class="logo" aria-label="Ella Xue home">
+        <!-- Hand-drawn-style logo mark -->
+        <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M8 38 C10 20, 24 8, 38 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 28 C18 24, 28 22, 34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="38" cy="12" r="3" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span>ella xue</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#photography" class="nav-link">Photography</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link nav-link--cta">Say Hello ↗</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+    </div>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav>
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#photography" class="mobile-nav-link">Photography</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#contact" class="mobile-nav-link">Say Hello ↗</a>
+    </nav>
   </div>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <p class="hero-greeting reveal">Hello, I'm</p>
-      <h1 class="hero-name reveal">Ella Xue</h1>
-      <p class="hero-tagline reveal">Designer &amp; Developer crafting meaningful digital experiences.</p>
-      <div class="hero-cta reveal">
-        <a href="#work" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ABOUT -->
-  <section id="about" class="about section">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image reveal">
-          <div class="image-frame">
-            <div class="image-placeholder">
-              <!-- Replace with: <img src="assets/photo.jpg" alt="Ella Xue" /> -->
-              <div class="initials">EX</div>
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section id="home" class="hero">
+
+      <!-- Floating doodles -->
+      <div class="doodle doodle--star-1 parallax" data-speed="0.04" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M20 4 L22 17 L35 12 L25 21 L36 28 L23 25 L22 38 L18 26 L6 32 L15 22 L4 16 L17 19 Z" stroke="var(--yellow)" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="doodle doodle--circle-1 parallax" data-speed="0.06" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none">
+          <path d="M30 6 C48 5, 56 18, 54 30 C52 44, 40 56, 28 54 C14 52, 4 40, 6 28 C8 14, 18 4, 30 6 Z" stroke="var(--blue)" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="doodle doodle--squiggle parallax" data-speed="0.03" aria-hidden="true">
+        <svg viewBox="0 0 80 20" fill="none">
+          <path d="M2 10 C10 4, 18 16, 26 10 C34 4, 42 16, 50 10 C58 4, 66 16, 74 10" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="doodle doodle--dot-cluster parallax" data-speed="0.05" aria-hidden="true">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="6" cy="6" r="2" fill="var(--yellow)" opacity="0.7"/>
+          <circle cx="15" cy="4" r="1.5" fill="var(--coral)" opacity="0.6"/>
+          <circle cx="24" cy="9" r="2.5" fill="var(--blue)" opacity="0.5"/>
+          <circle cx="10" cy="18" r="1.5" fill="var(--yellow)" opacity="0.8"/>
+          <circle cx="22" cy="22" r="2" fill="var(--coral)" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <!-- Background large faint text -->
+      <span class="hero-bg-text" aria-hidden="true">ELLA</span>
+
+      <div class="hero-layout">
+
+        <!-- Portrait frame -->
+        <div class="hero-portrait">
+          <div class="portrait-frame">
+            <!-- SVG doodle border frame -->
+            <svg class="frame-svg" viewBox="0 0 220 280" fill="none" aria-hidden="true">
+              <path d="M12 20 C10 10, 20 8, 30 10 L190 10 C202 10, 210 18, 210 28 L210 252 C210 264, 200 270, 190 268 L30 268 C18 268, 10 260, 12 250 Z" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3" fill="none" opacity="0.4"/>
+            </svg>
+            <div class="portrait-inner">
+              <!-- Replace with <img src="assets/photo.jpg" alt="Ella Xue"> -->
+              <div class="portrait-initials">EX</div>
             </div>
           </div>
+          <!-- Floating annotation -->
+          <div class="portrait-annotation" aria-hidden="true">
+            <svg viewBox="0 0 60 20" fill="none" class="annotation-arrow">
+              <path d="M4 10 C20 4, 40 14, 56 8" stroke="var(--ink-muted)" stroke-width="1" stroke-linecap="round" fill="none"/>
+              <path d="M50 4 L56 8 L50 13" stroke="var(--ink-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span>that's me ↑</span>
+          </div>
         </div>
+
+        <!-- Hero text -->
+        <div class="hero-text">
+          <div class="hero-label reveal">— digital project manager</div>
+          <h1 class="hero-heading reveal">
+            Hi, I'm<br/>
+            <em>Ella!</em>
+          </h1>
+          <p class="hero-sub reveal">I bring ideas to life through thoughtful coordination, creative direction, and a love for design.</p>
+          <a href="#projects" class="hero-cta reveal">
+            <span>Wanna explore the projects?</span>
+            <svg viewBox="0 0 40 12" fill="none" class="cta-arrow">
+              <path d="M0 6 L34 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M28 1 L34 6 L28 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg viewBox="0 0 120 8" fill="none" class="cta-underline" aria-hidden="true">
+              <path d="M2 4 C20 2, 40 6, 60 4 C80 2, 100 6, 118 4" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+          <!-- Rotated label -->
+          <div class="hero-aside" aria-hidden="true">
+            <span class="aside-text">scroll to discover ↓</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-track"><div class="scroll-thumb"></div></div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+         ============================================================ -->
+    <section id="projects" class="projects-section">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Selected Work</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <!-- Project 01 — large left -->
+      <article class="project-item project-item--left reveal">
+        <div class="project-visual">
+          <div class="project-img project-img--1">
+            <span class="project-img-label" aria-hidden="true">Project 01</span>
+          </div>
+          <!-- Doodle overlay -->
+          <svg class="project-doodle" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <path d="M10 70 C30 40, 50 60, 70 10" stroke="var(--yellow)" stroke-width="1.2" stroke-linecap="round" fill="none" stroke-dasharray="3 4"/>
+          </svg>
+        </div>
+        <div class="project-meta">
+          <span class="project-category">Brand Strategy · Digital</span>
+          <h3 class="project-name">Project One</h3>
+          <p class="project-desc">A thoughtful brand identity and digital strategy project — how clarity of vision translates into meaningful visual communication.</p>
+          <a href="#" class="project-link underline-link">
+            <span>View Case Study</span>
+            <span class="link-arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 02 — large right -->
+      <article class="project-item project-item--right reveal">
+        <div class="project-meta">
+          <span class="project-category">UX Research · Product</span>
+          <h3 class="project-name">Project Two</h3>
+          <p class="project-desc">An end-to-end product design process, from discovery workshops to high-fidelity prototypes that delight real users.</p>
+          <a href="#" class="project-link underline-link">
+            <span>View Case Study</span>
+            <span class="link-arrow">↗</span>
+          </a>
+        </div>
+        <div class="project-visual">
+          <div class="project-img project-img--2">
+            <span class="project-img-label" aria-hidden="true">Project 02</span>
+          </div>
+          <svg class="project-doodle project-doodle--right" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+            <circle cx="30" cy="30" r="24" stroke="var(--blue)" stroke-width="1.2" fill="none" stroke-dasharray="5 4"/>
+          </svg>
+        </div>
+      </article>
+
+      <!-- Project 03 & 04 — small pair -->
+      <div class="project-pair">
+        <article class="project-card reveal">
+          <div class="project-img project-img--3">
+            <span class="project-img-label" aria-hidden="true">Project 03</span>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-category">Content Strategy</span>
+            <h3 class="project-name">Project Three</h3>
+            <a href="#" class="project-link underline-link"><span>View</span><span class="link-arrow">↗</span></a>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-img project-img--4">
+            <span class="project-img-label" aria-hidden="true">Project 04</span>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-category">Campaign Management</span>
+            <h3 class="project-name">Project Four</h3>
+            <a href="#" class="project-link underline-link"><span>View</span><span class="link-arrow">↗</span></a>
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         ============================================================ -->
+    <section id="about" class="about-section">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="about-layout">
         <div class="about-text">
-          <span class="section-label reveal">About Me</span>
-          <h2 class="reveal">I build things that live on the internet.</h2>
-          <p class="reveal">
-            I'm a designer and developer passionate about creating beautiful, user-centered digital products. I combine clean aesthetics with thoughtful functionality to build experiences that people love to use.
-          </p>
-          <p class="reveal">
-            When I'm not coding or designing, you'll find me exploring new ideas, learning new tools, or working on passion projects that push my creative boundaries.
-          </p>
-          <a href="#contact" class="btn btn-primary reveal">Let's Talk</a>
+          <p class="about-lead reveal">I'm Ella — a digital project manager with a background in design and a love for turning complex ideas into clear, beautiful experiences.</p>
+          <p class="about-body reveal">I work at the intersection of strategy, creativity, and execution. Whether it's coordinating cross-functional teams, shaping a product roadmap, or obsessing over the details of a launch — I care deeply about the work and the people behind it.</p>
+          <p class="about-body reveal">Outside of work, I sketch, travel, and collect vintage design books.</p>
+          <div class="about-links reveal">
+            <a href="#contact" class="underline-link"><span>Get in touch</span><span class="link-arrow">↗</span></a>
+            <a href="#" class="underline-link"><span>Download CV</span><span class="link-arrow">↓</span></a>
+          </div>
+        </div>
+
+        <div class="about-visual reveal">
+          <!-- Decorative composition -->
+          <div class="about-doodle-wrap">
+            <svg class="about-doodle" viewBox="0 0 300 360" fill="none" aria-hidden="true">
+              <!-- Loose portrait oval -->
+              <ellipse cx="150" cy="160" rx="110" ry="130" stroke="var(--ink)" stroke-width="1" opacity="0.15"/>
+              <!-- Coral accent arc -->
+              <path d="M60 80 C100 20, 200 30, 240 80" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Yellow squiggle bottom -->
+              <path d="M40 280 C70 270, 100 290, 130 280 C160 270, 190 290, 220 280" stroke="var(--yellow)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Small annotations -->
+              <text x="230" y="150" font-family="Inter, sans-serif" font-size="9" fill="var(--ink-muted)" opacity="0.6" transform="rotate(-12, 230, 150)">curious</text>
+              <text x="30" y="220" font-family="Inter, sans-serif" font-size="9" fill="var(--ink-muted)" opacity="0.6" transform="rotate(8, 30, 220)">creative</text>
+              <text x="120" y="310" font-family="Inter, sans-serif" font-size="9" fill="var(--ink-muted)" opacity="0.6">detail-obsessed</text>
+              <!-- Blue dots -->
+              <circle cx="58" cy="130" r="4" fill="var(--blue)" opacity="0.5"/>
+              <circle cx="245" cy="200" r="6" fill="var(--yellow)" opacity="0.4"/>
+              <circle cx="100" cy="300" r="3" fill="var(--coral)" opacity="0.6"/>
+            </svg>
+            <!-- Sticky note feel -->
+            <div class="sticky-note">
+              <p>"I believe great projects start with clear thinking and warm collaboration."</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WORK -->
-  <section id="work" class="work section">
-    <div class="container">
-      <span class="section-label reveal">Selected Work</span>
-      <h2 class="reveal">Projects I'm Proud Of</h2>
-      <div class="projects-grid">
-
-        <article class="project-card reveal">
-          <div class="project-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-            <span class="project-number">01</span>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">UI Design</span>
-              <span class="tag">Development</span>
-            </div>
-            <h3>Project One</h3>
-            <p>A brief description of this project — what problem it solved, what technologies were used, and what impact it had.</p>
-            <a href="#" class="project-link">View Project →</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-            <span class="project-number">02</span>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Branding</span>
-              <span class="tag">Design</span>
-            </div>
-            <h3>Project Two</h3>
-            <p>A brief description of this project — what problem it solved, what technologies were used, and what impact it had.</p>
-            <a href="#" class="project-link">View Project →</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-            <span class="project-number">03</span>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Web App</span>
-              <span class="tag">React</span>
-            </div>
-            <h3>Project Three</h3>
-            <p>A brief description of this project — what problem it solved, what technologies were used, and what impact it had.</p>
-            <a href="#" class="project-link">View Project →</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-image" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
-            <span class="project-number">04</span>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Mobile</span>
-              <span class="tag">UX Research</span>
-            </div>
-            <h3>Project Four</h3>
-            <p>A brief description of this project — what problem it solved, what technologies were used, and what impact it had.</p>
-            <a href="#" class="project-link">View Project →</a>
-          </div>
-        </article>
-
+    <!-- ============================================================
+         PHOTOGRAPHY
+         ============================================================ -->
+    <section id="photography" class="photo-section">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Through the Lens</h2>
+        <div class="section-rule"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="skills section">
-    <div class="container">
-      <span class="section-label reveal">What I Do</span>
-      <h2 class="reveal">Skills &amp; Expertise</h2>
-      <div class="skills-grid">
+      <p class="photo-intro reveal">A quiet collection of moments — places, light, and small details that catch my eye.</p>
 
-        <div class="skill-card reveal">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <h3>UI / UX Design</h3>
-          <p>Crafting intuitive interfaces and seamless user experiences grounded in research and empathy.</p>
-          <ul class="skill-list">
-            <li>Figma</li><li>Adobe XD</li><li>Prototyping</li><li>User Research</li>
-          </ul>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <h3>Front-End Development</h3>
-          <p>Building responsive, performant websites and applications with modern web technologies.</p>
-          <ul class="skill-list">
-            <li>HTML / CSS</li><li>JavaScript</li><li>React</li><li>Tailwind</li>
-          </ul>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          </div>
-          <h3>Creative Direction</h3>
-          <p>Developing visual identities, brand systems, and creative strategies that resonate.</p>
-          <ul class="skill-list">
-            <li>Branding</li><li>Typography</li><li>Illustration</li><li>Motion</li>
-          </ul>
-        </div>
-
+      <div class="photo-grid">
+        <figure class="photo-item photo-item--tall reveal">
+          <div class="photo-placeholder photo-placeholder--1"></div>
+          <figcaption>Tokyo, 2024</figcaption>
+        </figure>
+        <figure class="photo-item reveal">
+          <div class="photo-placeholder photo-placeholder--2"></div>
+          <figcaption>Morning light</figcaption>
+        </figure>
+        <figure class="photo-item reveal">
+          <div class="photo-placeholder photo-placeholder--3"></div>
+          <figcaption>Market, Paris</figcaption>
+        </figure>
+        <figure class="photo-item photo-item--wide reveal">
+          <div class="photo-placeholder photo-placeholder--4"></div>
+          <figcaption>Coastline, summer</figcaption>
+        </figure>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact section">
-    <div class="container">
-      <div class="contact-inner">
-        <span class="section-label reveal">Get In Touch</span>
-        <h2 class="reveal">Let's Work Together</h2>
-        <p class="reveal">Have a project in mind or just want to say hello? My inbox is always open.</p>
-        <form class="contact-form reveal" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required />
-            </div>
+      <!-- Floating doodle near gallery -->
+      <div class="doodle doodle--camera" aria-hidden="true">
+        <svg viewBox="0 0 50 40" fill="none">
+          <rect x="4" y="12" width="42" height="26" rx="4" stroke="var(--ink)" stroke-width="1.2" fill="none"/>
+          <circle cx="25" cy="25" r="8" stroke="var(--ink)" stroke-width="1.2" fill="none"/>
+          <rect x="16" y="4" width="10" height="8" rx="2" stroke="var(--ink)" stroke-width="1.2" fill="none"/>
+          <circle cx="25" cy="25" r="4" stroke="var(--coral)" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
+    <section id="contact" class="contact-section">
+      <div class="section-header reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Say Hello</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-text">
+          <p class="contact-lead reveal">Have a project, a collab idea, or just want to connect? I'd love to hear from you.</p>
+          <a href="mailto:hello@ellaxue.com" class="contact-email reveal">
+            hello@ellaxue.com
+            <svg class="email-underline" viewBox="0 0 200 8" fill="none" aria-hidden="true">
+              <path d="M2 4 C40 2, 80 6, 120 4 C160 2, 180 6, 198 4" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <div class="contact-socials reveal">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="underline-link"><span>LinkedIn</span><span class="link-arrow">↗</span></a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="underline-link"><span>GitHub</span><span class="link-arrow">↗</span></a>
+            <a href="https://behance.net" target="_blank" rel="noopener" class="underline-link"><span>Behance</span><span class="link-arrow">↗</span></a>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name"/>
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <span>Send it</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
         </form>
-        <div class="contact-socials reveal">
-          <a href="mailto:hello@ellaxue.com" class="social-link">Email</a>
-          <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com" class="social-link" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://behance.net" class="social-link" target="_blank" rel="noopener">Behance</a>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Ella Xue. Designed &amp; built with care.</p>
+    <div class="footer-rule"></div>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Ella Xue &mdash; Made with curiosity &amp; care.</p>
+      <div class="footer-doodle" aria-hidden="true">
+        <svg viewBox="0 0 80 50" fill="none">
+          <!-- Small plant/flower doodle -->
+          <path d="M40 45 L40 25" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M40 35 C30 30, 22 18, 28 10 C34 2, 40 12, 40 25" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M40 30 C50 25, 58 14, 52 6 C46 -2, 40 10, 40 25" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <circle cx="28" cy="10" r="3" fill="var(--coral)" opacity="0.7"/>
+          <circle cx="52" cy="6" r="3" fill="var(--yellow)" opacity="0.7"/>
+        </svg>
+      </div>
+      <a href="#home" class="footer-back underline-link"><span>Back to top</span><span class="link-arrow">↑</span></a>
     </div>
   </footer>
 
