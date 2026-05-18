@@ -51,18 +51,19 @@
 
 <!-- ============================================================ HERO -->
 <div class="hero-scroll-container" id="heroScroll">
-  <div class="hero-sticky">
+  <div class="hero-sticky" id="heroSticky">
 
-    <!-- Giant name: starts right-offset, slides left on scroll -->
+    <!-- Name: hs-im sits absolutely to the left of hs-ella -->
     <div class="hs-upper">
-      <div class="hs-name-track" id="hsNameTrack">
-        <h1 class="hs-big-name"><span class="hs-im" id="hsIm">I'M </span>ELLA</h1>
+      <div class="hs-name-track" id="hsNameTrack" role="heading" aria-level="1" aria-label="I'm Ella">
+        <span class="hs-im" id="hsIm" aria-hidden="true">I'M </span>
+        <span class="hs-ella" id="hsElla" aria-hidden="true">ELLA</span>
       </div>
     </div>
 
-    <!-- Lower: eyebrow + crossfading description + buttons -->
+    <!-- Lower: eyebrow + crossfading descriptions + buttons -->
     <div class="hs-lower">
-      <span class="hs-eyebrow">Digital Project Manager</span>
+      <span class="hs-eyebrow" id="hsEyebrow">Digital Project Manager</span>
       <div class="hs-desc-wrap">
         <p class="hs-desc hs-desc--a" id="hsDescA">Bridging creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
         <p class="hs-desc hs-desc--b" id="hsDescB">A digital project manager based in Vancouver, focused on games, interactive media, and the craft of bringing creative teams together.</p>
@@ -73,13 +74,13 @@
       </div>
     </div>
 
-    <!-- Photo: fades in right side on scroll -->
+    <!-- Photo: contained card, fades in right on scroll -->
     <div class="hs-photo-wrap" id="hsPhotoWrap">
       <img src="assets/images/ella.JPG" alt="Ella Xue">
       <span class="hs-photo-tag">hi, that's me :)</span>
     </div>
 
-    <div class="hs-scroll-hint" aria-hidden="true">
+    <div class="hs-scroll-hint" id="hsScrollHint" aria-hidden="true">
       <div class="scroll-track"><div class="scroll-thumb"></div></div>
     </div>
 

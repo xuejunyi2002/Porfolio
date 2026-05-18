@@ -135,40 +135,84 @@ tabBtns.forEach(btn => {
    SCROLL HERO
    ============================================================ */
 (function initScrollHero() {
-  const container = document.getElementById('heroScroll');
-  const nameTrack = document.getElementById('hsNameTrack');
-  const hsIm      = document.getElementById('hsIm');
-  const descA     = document.getElementById('hsDescA');
-  const descB     = document.getElementById('hsDescB');
-  const photoWrap = document.getElementById('hsPhotoWrap');
-  if (!container || !nameTrack) return;
+  const container  = document.getElementById('heroScroll');
+  const stickyEl   = document.getElementById('heroSticky');
+  const nameTrack  = document.getElementById('hsNameTrack');
+  const hsIm       = document.getElementById('hsIm');
+  const hsElla     = document.getElementById('hsElla');
+  const descA      = document.getElementById('hsDescA');
+  const descB      = document.getElementById('hsDescB');
+  const photoWrap  = document.getElementById('hsPhotoWrap');
+  const eyebrow    = document.getElementById('hsEyebrow');
+  const scrollHint = document.getElementById('hsScrollHint');
+  if (!container || !nameTrack || !stickyEl) return;
 
-  function eio(t) { return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2; }
-  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
-  function prog(p, start, end) { return clamp((p - start) / (end - start), 0, 1); }
+  function eio(t) { return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+  function clamp(v,lo,hi) { return Math.min(hi,Math.max(lo,v)); }
+  function prog(p,s,e) { return clamp((p-s)/(e-s),0,1); }
+  function lerp(a,b,t) { return a+(b-a)*t; }
+  function lerpRGB(a,b,t) { return a.map((v,i)=>Math.round(lerp(v,b[i],t))); }
+  function rgb([r,g,b]) { return `rgb(${r},${g},${b})`; }
+
+  /* colour stops: light bg → dark bg, ink → white */
+  const BG_L=[250,249,247], BG_D=[28,26,24];
+  const INK_D=[28,26,24],   INK_L=[255,255,255];
+  const MUT_D=[140,137,132],MUT_L=[195,193,190];
+  const DSC_D=[92,89,86],   DSC_L=[210,208,205];
+
+  /* cache shift so we only recalculate on resize */
+  let cachedVW=0, cachedShift=0;
+  function getShift() {
+    const vw = window.innerWidth;
+    if (vw !== cachedVW) {
+      const pad = 0.04 * vw; // 4vw matches CSS padding
+      const trackW = nameTrack.getBoundingClientRect().width;
+      /* right-aligned natural left = vw - pad - trackW; target left = pad */
+      cachedShift = -(vw - 2*pad - trackW);
+      cachedVW = vw;
+    }
+    return cachedShift;
+  }
 
   function update() {
-    const rect     = container.getBoundingClientRect();
-    const scrollable = container.offsetHeight - window.innerHeight;
-    const p = clamp(-rect.top / scrollable, 0, 1);
+    const rect = container.getBoundingClientRect();
+    const p = clamp(-rect.top / (container.offsetHeight - window.innerHeight), 0, 1);
 
-    // Name slides right→left: starts at 38vw offset, ends at 0
-    nameTrack.style.transform = `translateX(${38 * (1 - eio(prog(p, 0, 0.75)))}vw)`;
+    /* 1 — name slides right → left */
+    nameTrack.style.transform = `translateX(${getShift() * eio(prog(p,0,0.75))}px)`;
 
-    // "I'M " fades out by p=0.45
-    hsIm.style.opacity = clamp(1 - p / 0.45, 0, 1);
+    /* 2 — "I'M " fades out */
+    hsIm.style.opacity = clamp(1-p/0.45, 0, 1);
 
-    // Description A fades out, B fades in
-    descA.style.opacity = clamp(1 - p / 0.35, 0, 1);
-    descB.style.opacity = eio(prog(p, 0.28, 0.62));
+    /* 3 — description crossfade */
+    descA.style.opacity = clamp(1-p/0.35, 0, 1);
+    descB.style.opacity = eio(prog(p,0.28,0.62));
 
-    // Photo slides in from right
-    const pp = eio(prog(p, 0.2, 0.65));
-    photoWrap.style.opacity  = pp;
-    photoWrap.style.transform = `translateX(${(1 - pp) * 3}rem)`;
+    /* 4 — photo slides in */
+    const pp = eio(prog(p,0.22,0.65));
+    photoWrap.style.opacity = pp;
+    photoWrap.style.transform = `translateX(${(1-pp)*3}rem)`;
+
+    /* 5 — background + text colour transition */
+    const bgP = eio(prog(p,0.38,0.72));
+    stickyEl.style.backgroundColor = rgb(lerpRGB(BG_L,BG_D,bgP));
+    const inkC = rgb(lerpRGB(INK_D,INK_L,bgP));
+    if (hsElla)  hsElla.style.color   = inkC;
+    hsIm.style.color = inkC;
+    if (eyebrow) eyebrow.style.color  = rgb(lerpRGB(MUT_D,MUT_L,bgP));
+    const descC = rgb(lerpRGB(DSC_D,DSC_L,bgP));
+    if (descA)   descA.style.color    = descC;
+    if (descB)   descB.style.color    = descC;
+
+    /* toggle data-dark for button CSS overrides */
+    stickyEl.dataset.dark = bgP > 0.5 ? '1' : '';
+
+    /* fade out scroll hint early */
+    if (scrollHint) scrollHint.style.opacity = clamp(1-p*6, 0, 1);
   }
 
   window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', () => { cachedVW=0; update(); });
   update();
 })();
 
