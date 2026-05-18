@@ -136,39 +136,30 @@ tabBtns.forEach(btn => {
    ============================================================ */
 (function initScrollHero() {
   const container  = document.getElementById('heroScroll');
-  const stickyEl   = document.getElementById('heroSticky');
   const nameTrack  = document.getElementById('hsNameTrack');
   const hsIm       = document.getElementById('hsIm');
-  const hsElla     = document.getElementById('hsElla');
   const descA      = document.getElementById('hsDescA');
   const descB      = document.getElementById('hsDescB');
   const photoWrap  = document.getElementById('hsPhotoWrap');
-  const eyebrow    = document.getElementById('hsEyebrow');
   const scrollHint = document.getElementById('hsScrollHint');
-  if (!container || !nameTrack || !stickyEl) return;
+  if (!container || !nameTrack) return;
 
   function eio(t) { return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
   function clamp(v,lo,hi) { return Math.min(hi,Math.max(lo,v)); }
   function prog(p,s,e) { return clamp((p-s)/(e-s),0,1); }
-  function lerp(a,b,t) { return a+(b-a)*t; }
-  function lerpRGB(a,b,t) { return a.map((v,i)=>Math.round(lerp(v,b[i],t))); }
-  function rgb([r,g,b]) { return `rgb(${r},${g},${b})`; }
 
-  /* colour stops: light bg → dark bg, ink → white */
-  const BG_L=[250,249,247], BG_D=[28,26,24];
-  const INK_D=[28,26,24],   INK_L=[255,255,255];
-  const MUT_D=[140,137,132],MUT_L=[195,193,190];
-  const DSC_D=[92,89,86],   DSC_L=[210,208,205];
-
-  /* cache shift so we only recalculate on resize */
+  /* Measure how far to slide so ELLA lands at the left padding edge.
+     Done at natural position (no transform) and cached per viewport width. */
   let cachedVW=0, cachedShift=0;
   function getShift() {
     const vw = window.innerWidth;
     if (vw !== cachedVW) {
-      const pad = 0.04 * vw; // 4vw matches CSS padding
-      const trackW = nameTrack.getBoundingClientRect().width;
-      /* right-aligned natural left = vw - pad - trackW; target left = pad */
-      cachedShift = -(vw - 2*pad - trackW);
+      const prev = nameTrack.style.transform;
+      nameTrack.style.transform = 'none';
+      const ellaEl = document.getElementById('hsElla');
+      const ellaLeft = ellaEl ? ellaEl.getBoundingClientRect().left : 0;
+      nameTrack.style.transform = prev;
+      cachedShift = -(ellaLeft - 0.04 * vw); // slide until ELLA sits at 4vw from left
       cachedVW = vw;
     }
     return cachedShift;
@@ -178,41 +169,27 @@ tabBtns.forEach(btn => {
     const rect = container.getBoundingClientRect();
     const p = clamp(-rect.top / (container.offsetHeight - window.innerHeight), 0, 1);
 
-    /* 1 — name slides right → left */
+    /* name slides centre → left */
     nameTrack.style.transform = `translateX(${getShift() * eio(prog(p,0,0.75))}px)`;
 
-    /* 2 — "I'M " fades out */
-    hsIm.style.opacity = clamp(1-p/0.45, 0, 1);
+    /* "I'M " fades out */
+    hsIm.style.opacity = clamp(1 - p / 0.45, 0, 1);
 
-    /* 3 — description crossfade */
-    descA.style.opacity = clamp(1-p/0.35, 0, 1);
-    descB.style.opacity = eio(prog(p,0.28,0.62));
+    /* description crossfade */
+    descA.style.opacity = clamp(1 - p / 0.35, 0, 1);
+    descB.style.opacity = eio(prog(p, 0.28, 0.62));
 
-    /* 4 — photo slides in */
-    const pp = eio(prog(p,0.22,0.65));
+    /* photo slides in */
+    const pp = eio(prog(p, 0.22, 0.65));
     photoWrap.style.opacity = pp;
-    photoWrap.style.transform = `translateX(${(1-pp)*3}rem)`;
+    photoWrap.style.transform = `translateX(${(1 - pp) * 3}rem)`;
 
-    /* 5 — background + text colour transition */
-    const bgP = eio(prog(p,0.38,0.72));
-    stickyEl.style.backgroundColor = rgb(lerpRGB(BG_L,BG_D,bgP));
-    const inkC = rgb(lerpRGB(INK_D,INK_L,bgP));
-    if (hsElla)  hsElla.style.color   = inkC;
-    hsIm.style.color = inkC;
-    if (eyebrow) eyebrow.style.color  = rgb(lerpRGB(MUT_D,MUT_L,bgP));
-    const descC = rgb(lerpRGB(DSC_D,DSC_L,bgP));
-    if (descA)   descA.style.color    = descC;
-    if (descB)   descB.style.color    = descC;
-
-    /* toggle data-dark for button CSS overrides */
-    stickyEl.dataset.dark = bgP > 0.5 ? '1' : '';
-
-    /* fade out scroll hint early */
-    if (scrollHint) scrollHint.style.opacity = clamp(1-p*6, 0, 1);
+    /* scroll hint fades */
+    if (scrollHint) scrollHint.style.opacity = clamp(1 - p * 6, 0, 1);
   }
 
   window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', () => { cachedVW=0; update(); });
+  window.addEventListener('resize', () => { cachedVW = 0; update(); });
   update();
 })();
 
