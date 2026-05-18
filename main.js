@@ -144,6 +144,10 @@ tabBtns.forEach(btn => {
   const scrollHint = document.getElementById('hsScrollHint');
   if (!container || !nameTrack) return;
 
+  /* Clear any stale inline background set by a previous JS version */
+  const stickyEl = document.getElementById('heroSticky');
+  if (stickyEl) stickyEl.style.backgroundColor = '';
+
   function eio(t) { return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
   function clamp(v,lo,hi) { return Math.min(hi,Math.max(lo,v)); }
   function prog(p,s,e) { return clamp((p-s)/(e-s),0,1); }
