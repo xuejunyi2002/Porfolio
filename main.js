@@ -3,35 +3,22 @@
    ============================================================ */
 const cursor   = document.getElementById('cursor');
 const follower = document.getElementById('cursor-follower');
-
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
 if (window.matchMedia('(pointer: fine)').matches && cursor && follower) {
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    mouseX = e.clientX; mouseY = e.clientY;
     cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
   });
-
-  (function animateFollower() {
+  (function tick() {
     followerX += (mouseX - followerX - 17) * 0.11;
     followerY += (mouseY - followerY - 17) * 0.11;
     follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
-    requestAnimationFrame(animateFollower);
+    requestAnimationFrame(tick);
   })();
-
-  // Scale up on interactive elements
   document.querySelectorAll('a, button, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform += ' scale(2)';
-      follower.style.opacity = '0.15';
-      follower.style.borderColor = 'var(--coral)';
-    });
-    el.addEventListener('mouseleave', () => {
-      follower.style.opacity = '0.5';
-      follower.style.borderColor = '';
-    });
+    el.addEventListener('mouseenter', () => { follower.style.opacity = '0.15'; follower.style.borderColor = 'var(--coral)'; });
+    el.addEventListener('mouseleave', () => { follower.style.opacity = '0.5';  follower.style.borderColor = ''; });
   });
 }
 
@@ -39,10 +26,11 @@ if (window.matchMedia('(pointer: fine)').matches && cursor && follower) {
    HEADER — compact on scroll
    ============================================================ */
 const header = document.getElementById('header');
-
-window.addEventListener('scroll', () => {
-  header.classList.toggle('compact', window.scrollY > 80);
-}, { passive: true });
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('compact', window.scrollY > 60);
+  }, { passive: true });
+}
 
 /* ============================================================
    HAMBURGER — mobile menu
@@ -57,7 +45,6 @@ if (hamburger && mobileNav) {
     hamburger.setAttribute('aria-expanded', String(isOpen));
     mobileNav.setAttribute('aria-hidden', String(!isOpen));
   });
-
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('open');
@@ -66,13 +53,10 @@ if (hamburger && mobileNav) {
       mobileNav.setAttribute('aria-hidden', 'true');
     });
   });
-
-  // Close on outside tap
   document.addEventListener('click', e => {
-    if (!header.contains(e.target) && !mobileNav.contains(e.target)) {
+    if (header && !header.contains(e.target) && !mobileNav.contains(e.target)) {
       mobileNav.classList.remove('open');
       hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
     }
   });
 }
@@ -92,104 +76,78 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ============================================================
-   PARALLAX DOODLES
+   PARALLAX DOODLES (hero only)
    ============================================================ */
 const parallaxEls = document.querySelectorAll('.parallax');
-
-function updateParallax() {
-  const scrollY = window.scrollY;
-  parallaxEls.forEach(el => {
-    const speed = parseFloat(el.dataset.speed) || 0.05;
-    el.style.transform = `translateY(${scrollY * speed}px)`;
-  });
-}
-
 if (parallaxEls.length) {
-  window.addEventListener('scroll', updateParallax, { passive: true });
-  updateParallax();
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    parallaxEls.forEach(el => {
+      const speed = parseFloat(el.dataset.speed) || 0.05;
+      el.style.transform = `translateY(${sy * speed}px)`;
+    });
+  }, { passive: true });
 }
 
 /* ============================================================
-   CURSOR-FOLLOWING DOODLES (hero only)
+   CURSOR-FOLLOWING DOODLES (hero)
    ============================================================ */
 if (window.matchMedia('(pointer: fine)').matches) {
+  const hero = document.querySelector('.hero');
   const floatingDoodles = document.querySelectorAll('.hero .doodle');
-  let heroRect = null;
-
-  const hero = document.getElementById('home');
-  if (hero) {
-    heroRect = hero.getBoundingClientRect();
-    window.addEventListener('resize', () => { heroRect = hero.getBoundingClientRect(); });
-
+  if (hero && floatingDoodles.length) {
     document.addEventListener('mousemove', e => {
-      if (!heroRect) return;
-      const cx = heroRect.width  / 2;
-      const cy = heroRect.height / 2;
-      const dx = (e.clientX - cx) / cx;
-      const dy = (e.clientY - cy) / cy;
-
+      const r = hero.getBoundingClientRect();
+      const dx = (e.clientX - r.width / 2) / (r.width / 2);
+      const dy = (e.clientY - r.height / 2) / (r.height / 2);
       floatingDoodles.forEach((d, i) => {
-        const factor = (i % 2 === 0 ? 1 : -1) * 6;
-        d.style.transform = `translate(${dx * factor}px, ${dy * factor}px)`;
+        const f = (i % 2 === 0 ? 1 : -1) * 6;
+        d.style.transform = `translate(${dx * f}px, ${dy * f}px)`;
       });
     });
   }
 }
 
 /* ============================================================
-   ACTIVE NAV LINK
+   TAB COMPONENT (home page PM traits)
    ============================================================ */
-const sections  = document.querySelectorAll('section[id]');
-const navLinks  = document.querySelectorAll('.nav-link');
+const tabBtns   = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
 
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.toggle(
-          'active',
-          link.getAttribute('href') === `#${entry.target.id}`
-        );
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+    tabPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    const target = document.getElementById(btn.dataset.tab);
+    if (target) {
+      target.classList.add('active');
+      // Trigger reveal for newly shown items
+      target.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        setTimeout(() => el.classList.add('visible'), 50);
       });
     }
   });
-}, { rootMargin: '-30% 0px -60% 0px' });
-
-sections.forEach(s => sectionObserver.observe(s));
+});
 
 /* ============================================================
    CONTACT FORM
    ============================================================ */
 const form = document.getElementById('contactForm');
-
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const btnText = form.querySelector('.form-submit span');
-    if (!btnText) return;
-    const original = btnText.textContent;
-
+    const btn     = form.querySelector('.form-submit');
+    const btnText = btn.querySelector('span');
+    const orig    = btnText.textContent;
     btnText.textContent = 'Sending…';
-    form.querySelector('.form-submit').disabled = true;
-
-    // Swap this with Formspree / EmailJS for real sending
+    btn.disabled = true;
+    // Replace with Formspree / EmailJS
     setTimeout(() => {
-      btnText.textContent = 'Sent! Talk soon ✦';
+      btnText.textContent = 'Sent! Talk soon.';
       form.reset();
-      setTimeout(() => {
-        btnText.textContent = original;
-        form.querySelector('.form-submit').disabled = false;
-      }, 3500);
+      setTimeout(() => { btnText.textContent = orig; btn.disabled = false; }, 3500);
     }, 1000);
   });
 }
-
-/* ============================================================
-   PROJECT CARD HOVER — image shift
-   ============================================================ */
-document.querySelectorAll('.project-card').forEach(card => {
-  const img = card.querySelector('.project-img');
-  if (!img) return;
-  card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.03)'; });
-  card.addEventListener('mouseleave', () => { img.style.transform = ''; });
-});

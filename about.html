@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Ella Xue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-follower" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M8 38 C10 20,24 8,38 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14 28 C18 24,28 22,34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="38" cy="12" r="3" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+      </svg>
+      ella xue
+    </a>
+    <nav class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="about.html"   class="nav-link active">About Me</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="contact.html" class="nav-link nav-link--cta">Contact ↗</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="header-rule"></div>
+</header>
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav>
+    <a href="index.html"    class="mobile-nav-link">Home</a>
+    <a href="about.html"   class="mobile-nav-link">About Me</a>
+    <a href="projects.html" class="mobile-nav-link">Projects</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </nav>
+</div>
+
+<main class="page-top">
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="page-hero-eyebrow reveal">Get to know me</span>
+    <h1 class="page-hero-title reveal">About <em>Me</em></h1>
+    <p class="page-hero-sub reveal">Digital project manager, creative collaborator, and lifelong learner — this is who I am and why I do what I do.</p>
+  </div>
+</div>
+
+<!-- ============================================================ INTRO + BACKGROUND -->
+<section class="section">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-avatar reveal">
+        <div class="portrait-frame">
+          <svg class="frame-svg" viewBox="0 0 220 280" fill="none" aria-hidden="true">
+            <path d="M12 20 C10 10,20 8,30 10 L190 10 C202 10,210 18,210 28 L210 252 C210 264,200 270,190 268 L30 268 C18 268,10 260,12 250 Z" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3" fill="none" opacity="0.3"/>
+          </svg>
+          <div class="portrait-inner">
+            <!-- Replace with <img src="assets/photo.jpg" alt="Ella Xue"> -->
+            <div class="portrait-initials">EX</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow reveal">Introduction</span>
+        <p class="about-lead reveal">I'm Ella Xue — a digital project manager with a background in design, a passion for the games industry, and a habit of caring deeply about the details.</p>
+        <p class="about-body reveal">I studied interactive media and have spent the past few years working at the intersection of production, design, and cross-functional collaboration. Whether I'm running a sprint retrospective, syncing with a client on deliverables, or obsessing over an onboarding flow — I bring the same level of intention to every part of the process.</p>
+        <p class="about-body reveal">I believe the best projects are built by people who trust each other, communicate clearly, and never lose sight of the human experience on the other end of the work.</p>
+        <div class="about-actions reveal">
+          <a href="assets/Ella-Xue-CV.pdf" download class="btn btn-primary">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v8M5 7l3 3 3-3M2 12h12"/></svg>
+            Download CV
+          </a>
+          <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHY PM / WHY DIGITAL ENTERTAINMENT -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="eyebrow reveal">My Why</span>
+    <h2 class="section-heading reveal">Why PM? Why Digital Entertainment?</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <p class="why-num">01</p>
+        <h3 class="why-title">Why Project Management?</h3>
+        <p class="why-body">I've always been the person who wants to understand the whole picture — how the pieces fit, where the blockers are, and how to keep people moving forward together. Project management isn't about control; it's about creating the conditions where creative people can do their best work without friction getting in the way.</p>
+        <p class="why-body" style="margin-top:1rem;">I get energy from the moments when a scattered team finds its rhythm, when a roadblock turns into a pivot, when a project that felt impossible finally ships. That's why I chose this path.</p>
+      </div>
+      <div class="why-card reveal reveal-d1">
+        <p class="why-num">02</p>
+        <h3 class="why-title">Why Digital Entertainment?</h3>
+        <p class="why-body">Games and digital media are where I feel most alive professionally. They combine every discipline I care about — design, technology, storytelling, psychology, and community — into a single product. The stakes are high and the craft is demanding, and I find that combination genuinely thrilling.</p>
+        <p class="why-body" style="margin-top:1rem;">The games industry is one of the few places where a PM needs to understand VR interaction design AND sprint velocity AND what makes a tutorial feel fair. I love that complexity. I want to build my career inside it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHAT I DO -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow reveal">Capabilities</span>
+    <h2 class="section-heading reveal">What I Do</h2>
+    <p class="section-lead reveal">A set of skills I've developed through real projects — and continue to sharpen with every new challenge.</p>
+    <div class="what-grid">
+      <div class="what-item reveal">
+        <span class="what-idx">01</span>
+        <p class="what-title">Production Planning</p>
+        <p class="what-body">Roadmaps, sprint structures, milestone definitions, and the documentation scaffolding that holds everything together.</p>
+      </div>
+      <div class="what-item reveal reveal-d1">
+        <span class="what-idx">02</span>
+        <p class="what-title">Stakeholder Communication</p>
+        <p class="what-body">Weekly demos, written updates, and live syncs that keep clients informed and teams aligned without over-meeting.</p>
+      </div>
+      <div class="what-item reveal reveal-d2">
+        <span class="what-idx">03</span>
+        <p class="what-title">Risk &amp; Scope Management</p>
+        <p class="what-body">Proactive identification of dependencies and blockers, with clear frameworks for trade-off decisions under pressure.</p>
+      </div>
+      <div class="what-item reveal">
+        <span class="what-idx">04</span>
+        <p class="what-title">Playtesting &amp; Iteration</p>
+        <p class="what-body">Designing test sessions, synthesizing player feedback, and translating insights into prioritized sprint tasks within 48 hours.</p>
+      </div>
+      <div class="what-item reveal reveal-d1">
+        <span class="what-idx">05</span>
+        <p class="what-title">UI/UX Coordination</p>
+        <p class="what-body">Bridging design intent and development implementation — reviewing wireframes, managing handoff quality, advocating for the user.</p>
+      </div>
+      <div class="what-item reveal reveal-d2">
+        <span class="what-idx">06</span>
+        <p class="what-title">Cross-Functional Leadership</p>
+        <p class="what-body">Facilitating alignment across art, engineering, design, and production pipelines — keeping interdependent teams in sync.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CERTIFICATES -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="eyebrow reveal">Credentials</span>
+    <h2 class="section-heading reveal">Certificates &amp; Training</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <span class="cert-issuer">PMI</span>
+        <p class="cert-name">CAPM — Certified Associate in Project Management</p>
+        <p class="cert-year">2025</p>
+      </div>
+      <div class="cert-card reveal reveal-d1">
+        <span class="cert-issuer">Google</span>
+        <p class="cert-name">Google Project Management Professional Certificate</p>
+        <p class="cert-year">2024</p>
+      </div>
+      <div class="cert-card reveal reveal-d2">
+        <span class="cert-issuer">Scrum Alliance</span>
+        <p class="cert-name">Certified ScrumMaster (CSM)</p>
+        <p class="cert-year">2025</p>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-issuer">Coursera / Meta</span>
+        <p class="cert-name">Meta AR/VR Developer Certificate</p>
+        <p class="cert-year">2024</p>
+      </div>
+      <div class="cert-card reveal reveal-d1">
+        <span class="cert-issuer">Figma</span>
+        <p class="cert-name">Figma Professional — UI/UX Design Certification</p>
+        <p class="cert-year">2023</p>
+      </div>
+      <div class="cert-card reveal reveal-d2">
+        <span class="cert-issuer">Unity</span>
+        <p class="cert-name">Unity Certified User: Programmer</p>
+        <p class="cert-year">2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ OUTSIDE WORK -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow reveal">Life Outside Work</span>
+    <h2 class="section-heading reveal">What I Do When I'm Not Managing Projects</h2>
+    <p class="section-lead reveal">I'm a curious person outside the office too — here are a few things that keep me grounded and inspired.</p>
+    <div class="outside-grid">
+      <div class="outside-card reveal">
+        <div class="outside-thumb outside-thumb--photo"></div>
+        <div class="outside-body">
+          <p class="outside-title">Photography</p>
+          <p class="outside-desc">I shoot mostly on film — street scenes, architecture, light. Photography slows me down and reminds me to notice things.</p>
+        </div>
+      </div>
+      <div class="outside-card reveal reveal-d1">
+        <div class="outside-thumb outside-thumb--sports"></div>
+        <div class="outside-body">
+          <p class="outside-title">Sports &amp; Movement</p>
+          <p class="outside-desc">I play badminton competitively and run to clear my head. Movement is where I process ideas and reset between sprints (literally).</p>
+        </div>
+      </div>
+      <div class="outside-card reveal reveal-d2">
+        <div class="outside-thumb outside-thumb--pets"></div>
+        <div class="outside-body">
+          <p class="outside-title">Pets</p>
+          <p class="outside-desc">I have a cat named Mochi who is an excellent project manager — she knows exactly what she wants and communicates it clearly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span class="footer-brand">Ella Xue</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span style="font-size:0.72rem; color:var(--ink-faint);">© 2026</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
