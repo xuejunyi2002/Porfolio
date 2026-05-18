@@ -302,13 +302,18 @@ button { font-family: var(--font-sans); }
 .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /*
-  Width drives everything. min() caps it so height never exceeds 70vh
-  at any viewport (3/4 ratio: width = height × 0.75).
-  aspect-ratio locks the frame shape across all screen sizes.
+  left + right define the "right-side region" (60vw → viewport edge).
+  margin: 0 auto on an absolutely-positioned element with both offsets
+  fixed distributes remaining space equally → photo stays centred in
+  the 40vw right area on every screen width, no hardcoded gutters.
+  aspect-ratio: 3/4 locks the frame shape; min() prevents height
+  from exceeding 70vh on short screens.
 */
 .hs-photo-wrap {
-  position: absolute; right: 4vw;
+  position: absolute;
+  left: 60vw; right: 0;
   top: calc(var(--nav-h) + clamp(2rem, 5vh, 5rem));
+  margin: 0 auto;
   width: min(28vw, calc(70vh * 0.75));
   aspect-ratio: 3 / 4;
   overflow: hidden; opacity: 0;
@@ -335,10 +340,10 @@ button { font-family: var(--font-sans); }
 .scroll-thumb { position: absolute; top: 0; left: 0; width: 100%; height: 40%; background: var(--ink-faint); animation: scrollDown 2.2s ease-in-out infinite; }
 @keyframes scrollDown { 0% { top: -40%; } 100% { top: 140%; } }
 
-/* Tablet / small laptop: tighten spacing, keep layout intact */
+/* Tablet / small laptop: slightly narrower photo, text breathing room */
 @media (max-width: 1024px) {
   .hs-big-name { font-size: clamp(5.5rem, 18vw, 18rem); }
-  .hs-photo-wrap { width: min(30vw, calc(68vh * 0.75)); }
+  .hs-photo-wrap { width: min(30vw, calc(66vh * 0.75)); }
   .hs-lower { max-width: 58vw; }
 }
 
