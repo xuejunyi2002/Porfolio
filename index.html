@@ -53,45 +53,32 @@
 <div class="hero-scroll-container" id="heroScroll">
   <div class="hero-sticky">
 
-    <!-- Light base layer -->
-    <div class="hs-base">
-      <div class="hs-upper">
-        <h1 class="hs-big-name">I'M ELLA</h1>
-      </div>
-      <div class="hs-lower">
-        <span class="hs-eyebrow">Digital Project Manager</span>
-        <p class="hs-desc">Bridging creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
-        <div class="hs-actions">
-          <a href="projects.html" class="btn btn-primary">See My Work</a>
-          <a href="about.html"   class="btn btn-outline">About Me</a>
-        </div>
+    <!-- Giant name: starts right-offset, slides left on scroll -->
+    <div class="hs-upper">
+      <div class="hs-name-track" id="hsNameTrack">
+        <h1 class="hs-big-name"><span class="hs-im" id="hsIm">I'M </span>ELLA</h1>
       </div>
     </div>
 
-    <!-- Dark panel (text-inversion, scroll driven) -->
-    <div class="hs-dark-panel" id="hsDarkPanel">
-      <div class="hs-dark-inner">
-        <div class="hs-upper">
-          <h1 class="hs-big-name">I'M ELLA</h1>
-        </div>
-        <div class="hs-lower">
-          <span class="hs-eyebrow">Digital Project Manager</span>
-          <p class="hs-desc">Bridging creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
-          <div class="hs-actions">
-            <a href="projects.html" class="btn btn-primary">See My Work</a>
-            <a href="about.html"   class="btn btn-outline">About Me</a>
-          </div>
-        </div>
+    <!-- Lower: eyebrow + crossfading description + buttons -->
+    <div class="hs-lower">
+      <span class="hs-eyebrow">Digital Project Manager</span>
+      <div class="hs-desc-wrap">
+        <p class="hs-desc hs-desc--a" id="hsDescA">Bridging creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
+        <p class="hs-desc hs-desc--b" id="hsDescB">A digital project manager based in Vancouver, focused on games, interactive media, and the craft of bringing creative teams together.</p>
+      </div>
+      <div class="hs-actions">
+        <a href="projects.html" class="btn btn-primary">See My Work</a>
+        <a href="about.html"   class="btn btn-outline">About Me</a>
       </div>
     </div>
 
-    <!-- Photo (right side, opacity driven by scroll) -->
+    <!-- Photo: fades in right side on scroll -->
     <div class="hs-photo-wrap" id="hsPhotoWrap">
-      <img src="assets/ella.jpg" alt="Ella Xue">
+      <img src="assets/images/ella.JPG" alt="Ella Xue">
       <span class="hs-photo-tag">hi, that's me :)</span>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="hs-scroll-hint" aria-hidden="true">
       <div class="scroll-track"><div class="scroll-thumb"></div></div>
     </div>

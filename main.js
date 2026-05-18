@@ -136,30 +136,36 @@ tabBtns.forEach(btn => {
    ============================================================ */
 (function initScrollHero() {
   const container = document.getElementById('heroScroll');
-  const darkPanel = document.getElementById('hsDarkPanel');
+  const nameTrack = document.getElementById('hsNameTrack');
+  const hsIm      = document.getElementById('hsIm');
+  const descA     = document.getElementById('hsDescA');
+  const descB     = document.getElementById('hsDescB');
   const photoWrap = document.getElementById('hsPhotoWrap');
-  if (!container || !darkPanel) return;
+  if (!container || !nameTrack) return;
 
-  function easeInOut(t) {
-    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  }
+  function eio(t) { return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2; }
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+  function prog(p, start, end) { return clamp((p - start) / (end - start), 0, 1); }
 
   function update() {
-    const rect = container.getBoundingClientRect();
+    const rect     = container.getBoundingClientRect();
     const scrollable = container.offsetHeight - window.innerHeight;
-    const scrolled = Math.max(0, -rect.top);
-    const progress = Math.min(1, scrolled / scrollable);
+    const p = clamp(-rect.top / scrollable, 0, 1);
 
-    // Dark panel: 0 → 52vw as progress 0 → 0.65
-    const panelProg = easeInOut(Math.min(1, progress / 0.65));
-    darkPanel.style.width = (panelProg * 52) + 'vw';
+    // Name slides right→left: starts at 38vw offset, ends at 0
+    nameTrack.style.transform = `translateX(${38 * (1 - eio(prog(p, 0, 0.75)))}vw)`;
 
-    // Photo: fades/slides in as progress 0.15 → 0.55
-    if (photoWrap) {
-      const photoProg = Math.max(0, Math.min(1, (progress - 0.15) / 0.4));
-      photoWrap.style.opacity = photoProg;
-      photoWrap.style.transform = `translateX(${(1 - photoProg) * 2.5}rem)`;
-    }
+    // "I'M " fades out by p=0.45
+    hsIm.style.opacity = clamp(1 - p / 0.45, 0, 1);
+
+    // Description A fades out, B fades in
+    descA.style.opacity = clamp(1 - p / 0.35, 0, 1);
+    descB.style.opacity = eio(prog(p, 0.28, 0.62));
+
+    // Photo slides in from right
+    const pp = eio(prog(p, 0.2, 0.65));
+    photoWrap.style.opacity  = pp;
+    photoWrap.style.transform = `translateX(${(1 - pp) * 3}rem)`;
   }
 
   window.addEventListener('scroll', update, { passive: true });
