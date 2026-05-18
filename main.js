@@ -143,24 +143,35 @@ tabBtns.forEach(btn => {
   const scrollHint = document.getElementById('hsScrollHint');
   if (!container || !hsIm) return;
 
+  const nameTrack = document.getElementById('hsNameTrack');
+
   /* Clear any stale inline styles from old JS versions */
   const stickyEl = document.getElementById('heroSticky');
   if (stickyEl) stickyEl.style.backgroundColor = '';
-  const nameTrack = document.getElementById('hsNameTrack');
   if (nameTrack) nameTrack.style.transform = '';
 
   function eio(t) { return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
   function clamp(v,lo,hi) { return Math.min(hi,Math.max(lo,v)); }
   function prog(p,s,e) { return clamp((p-s)/(e-s),0,1); }
 
+  /* Cache I'M span width so ELLA lands at exactly the same left edge */
+  let cachedImWidth = 0;
+  function getImWidth() {
+    if (!cachedImWidth && hsIm) cachedImWidth = hsIm.getBoundingClientRect().width;
+    return cachedImWidth;
+  }
+
   function update() {
     const rect = container.getBoundingClientRect();
     const p = clamp(-rect.top / (container.offsetHeight - window.innerHeight), 0, 1);
 
-    /* "I'M" fades out and lifts slightly */
-    const imP = clamp(p / 0.45, 0, 1);
-    hsIm.style.opacity = 1 - imP;
-    hsIm.style.transform = `translateY(${-imP * 18}px)`;
+    /* Slide name track left so ELLA aligns at same 4vw edge */
+    if (nameTrack) {
+      nameTrack.style.transform = `translateX(${-getImWidth() * eio(prog(p, 0, 0.75))}px)`;
+    }
+
+    /* "I'M" fades out as it slides */
+    hsIm.style.opacity = clamp(1 - p / 0.45, 0, 1);
 
     /* description crossfade */
     descA.style.opacity = clamp(1 - p / 0.35, 0, 1);
@@ -176,7 +187,7 @@ tabBtns.forEach(btn => {
   }
 
   window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', () => { cachedVW = 0; update(); });
+  window.addEventListener('resize', () => { cachedImWidth = 0; update(); });
   update();
 })();
 

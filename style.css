@@ -257,33 +257,22 @@ button { font-family: var(--font-sans); }
   padding-top: var(--nav-h);
 }
 
-/* Upper — name left-aligned at same edge as lower section, pushed toward bottom */
+/* Upper — left-aligned at 4vw (same as lower section), pushed toward bottom */
 .hs-upper {
   flex: 1; display: flex;
   align-items: flex-end; justify-content: flex-start;
-  padding: 0 4vw 3rem; /* 4vw matches .hs-lower; 3rem gap above lower text */
-  min-height: 0; overflow: visible;
+  padding: 0 4vw 3rem;
+  min-height: 0; overflow: hidden;
 }
-.hs-name-wrap {
-  position: relative; /* anchor for abs-positioned .hs-im */
-}
-/* ELLA — in normal flow, always at the left edge */
-.hs-ella {
+.hs-name-track { will-change: transform; }
+.hs-big-name {
   font-family: var(--font-serif);
   font-size: clamp(9rem, 24vw, 24rem);
   font-weight: 600; line-height: 0.9;
   letter-spacing: -0.03em; white-space: nowrap;
-  color: var(--ink); margin: 0; display: block;
+  color: var(--ink); margin: 0;
 }
-/* I'M — absolute, sits directly above ELLA, fades on scroll */
-.hs-im {
-  position: absolute; bottom: 100%; left: 0;
-  font-family: var(--font-serif);
-  font-size: clamp(9rem, 24vw, 24rem);
-  font-weight: 600; line-height: 0.9;
-  letter-spacing: -0.03em; white-space: nowrap;
-  color: var(--ink); will-change: opacity, transform;
-}
+.hs-im { will-change: opacity; }
 
 /* Lower — eyebrow + descriptions + buttons */
 .hs-lower {
@@ -335,7 +324,7 @@ button { font-family: var(--font-sans); }
 
 @media (max-width: 640px) {
   .hs-upper { padding: 0 5vw 2rem; }
-  .hs-ella, .hs-im { font-size: clamp(5rem, 20vw, 9rem); }
+  .hs-big-name { font-size: clamp(5rem, 20vw, 9rem); }
   .hs-lower { max-width: 92vw; padding: 1.25rem 5vw 2rem; }
   .hs-photo-wrap { width: 48vw; height: 50vh; right: 2vw; top: calc(var(--nav-h) + 3rem); }
 }
