@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Translation — Ella Xue</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafaf8;
+  --white: #ffffff;
+  --text: #1a1a18;
+  --muted: #888884;
+  --muted2: #aaa9a4;
+  --border: #e8e6e0;
+  --border2: #d4d2cb;
+  --accent: #4a62a0;
+  --accent-light: #eaecf5;
+  --accent2: #bf6b4a;
+  --accent2-light: #f0e8e3;
+  --surface: #f4f3ef;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.4rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  transform-origin: left;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after { transform: scaleX(1); }
+
+.hero {
+  padding: 12rem 5rem 7rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid;
+}
+.tag-pm { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.tag-type { border-color: var(--border2); color: var(--muted); background: transparent; }
+.tag-client { border-color: rgba(191,107,74,0.4); color: var(--accent2); background: var(--accent2-light); }
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.4rem;
+  max-width: 820px;
+}
+.hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+.hero-stats {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 600px;
+  background: var(--white);
+}
+.stat-box {
+  flex: 1;
+  padding: 1.6rem 1.8rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: background 0.2s;
+}
+.stat-box:last-child { border-right: none; }
+.stat-box:hover { background: var(--surface); }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 5rem; }
+section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+section:last-of-type { border-bottom: none; }
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+.snapshot-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+.snap-cell {
+  padding: 1.5rem 1.6rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.snap-cell:last-child { border-right: none; }
+.snap-cell:hover { background: var(--surface); }
+.snap-key {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 6px;
+}
+.snap-val { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+/* DUAL ROLE BLOCK */
+.dual-role {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--border);
+  margin-bottom: 3rem;
+}
+.dr-half {
+  background: var(--white);
+  padding: 2.5rem 2.8rem;
+  transition: background 0.2s;
+}
+.dr-half:hover { background: var(--surface); }
+.dr-index {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.8rem;
+}
+.dr-role-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.dr-role-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+.dr-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+.resp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--border);
+}
+.resp-card { background: var(--white); padding: 2rem 1.8rem; transition: background 0.2s; cursor: default; }
+.resp-card:hover { background: var(--surface); }
+.resp-idx { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--muted2); margin-bottom: 0.9rem; }
+.resp-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; line-height: 1.3; }
+.resp-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+/* PLATFORM FEATURES */
+.features-intro {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.feat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+.feat-card:nth-child(2)::before { opacity: 0.5; }
+.feat-card:nth-child(3)::before { opacity: 0.75; }
+.feat-card:nth-child(4)::before { opacity: 1; }
+.feat-icon {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.8rem;
+}
+.feat-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; line-height: 1.3; }
+.feat-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+
+/* CHALLENGE */
+.challenge-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--border);
+}
+.ch-panel {
+  background: var(--white);
+  padding: 2.5rem 2.4rem;
+  transition: background 0.2s;
+}
+.ch-panel:hover { background: var(--surface); }
+.ch-panel-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.ch-panel-label.problem { color: var(--accent2); }
+.ch-panel-label.response { color: var(--muted2); }
+.ch-panel-label.outcome { color: var(--accent); }
+.ch-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.ch-panel-body { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.75; }
+
+/* TIMELINE */
+.sprint-summary { display: flex; gap: 1.5rem; margin-bottom: 4rem; }
+.sprint-pill {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sprint-pill span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.timeline { position: relative; padding-left: 2px; }
+.timeline-line {
+  position: absolute;
+  top: 12px; bottom: 12px; left: 0;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-progress {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px;
+  background: var(--accent);
+  height: 0%;
+  transition: height 0.6s ease;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 2.2rem 0 2.2rem 2.4rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item:hover { background: rgba(0,0,0,0.012); border-radius: 8px; }
+.tl-dot {
+  position: absolute;
+  left: -5px; top: 2.6rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border2);
+  transition: border-color 0.3s, background 0.3s;
+}
+.tl-item.active .tl-dot,
+.tl-item:hover .tl-dot { border-color: var(--accent); background: var(--accent); }
+.tl-sprint-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.tl-sprint-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.tl-dates { font-size: 11px; color: var(--muted2); }
+.tl-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+.chip {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 12px;
+  transition: all 0.2s;
+}
+.chip.key {
+  color: var(--accent);
+  background: var(--accent-light);
+  border-color: rgba(74,98,160,0.2);
+  font-weight: 500;
+}
+.tl-pm-note {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+  padding-left: 12px;
+  border-left: 2px solid var(--border);
+}
+
+/* REFLECTION */
+.reflection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.refl-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2.2rem 2rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.refl-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.refl-big-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.refl-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+.refl-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+/* OUTCOME BANNER */
+.outcome-banner {
+  background: var(--text);
+  border-radius: 16px;
+  padding: 3.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.ob-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1rem;
+}
+.ob-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  font-style: italic;
+}
+.ob-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ob-stat { background: rgba(255,255,255,0.04); padding: 1.4rem; transition: background 0.2s; }
+.ob-stat:hover { background: rgba(255,255,255,0.08); }
+.ob-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.ob-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+footer {
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--muted); }
+.footer-info { font-size: 11px; color: var(--muted2); letter-spacing: 0.05em; }
+
+@media (max-width: 960px) {
+  nav, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero { padding: 8rem 1.5rem 5rem; }
+  .page-wrap { padding: 0 1.5rem; }
+  .snapshot-row { grid-template-columns: repeat(2, 1fr); }
+  .dual-role { grid-template-columns: 1fr; }
+  .resp-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .challenge-block { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 1fr; }
+  .reflection-grid { grid-template-columns: 1fr; }
+  .outcome-banner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Ella Xue</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Projects</a></li>
+    <li><a href="#">Photography</a></li>
+    <li><a href="#">About Me</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-meta reveal">
+    <span class="tag tag-pm">Co-Project Manager</span>
+    <span class="tag tag-pm">UI and UX Lead</span>
+    <span class="tag tag-type">AI Web Platform</span>
+    <span class="tag tag-client">UBC Library</span>
+  </div>
+  <h1 class="hero-title reveal reveal-delay-1">
+    Knowledge<br><em>Translation</em>
+  </h1>
+  <p class="hero-sub reveal reveal-delay-2">
+    A 10-week academic project for UBC Library — an AI platform that transforms dense academic research into structured summaries, infographics, podcasts, and voice chat.
+  </p>
+  <div class="hero-stats reveal reveal-delay-3">
+    <div class="stat-box">
+      <span class="stat-num">10</span>
+      <span class="stat-label">Week Timeline</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Roles Held</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Content Formats</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">AI</span>
+      <span class="stat-label">Powered Platform</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <section>
+    <p class="eyebrow reveal">Project Snapshot</p>
+    <div class="snapshot-row reveal reveal-delay-1">
+      <div class="snap-cell">
+        <p class="snap-key">Role</p>
+        <p class="snap-val">Co-PM and UI/UX Sub-team Lead</p>
+      </div>
+      <div class="snap-cell">
+        <p class="snap-key">Duration</p>
+        <p class="snap-val">10 Weeks</p>
+      </div>
+      <div class="snap-cell">
+        <p class="snap-key">Client</p>
+        <p class="snap-val">UBC Library / Digital Experience Lab</p>
+      </div>
+      <div class="snap-cell">
+        <p class="snap-key">Stack</p>
+        <p class="snap-val">Python · FastAPI · AI Integration</p>
+      </div>
+      <div class="snap-cell">
+        <p class="snap-key">Tools</p>
+        <p class="snap-val">Jira · Figma · Notion</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Skills Demonstrated</p>
+    <h2 class="section-title reveal reveal-delay-1">A Dual Role</h2>
+    <div class="dual-role reveal reveal-delay-2">
+      <div class="dr-half">
+        <p class="dr-index">01</p>
+        <p class="dr-role-title">Co-<em>Project Manager</em></p>
+        <p class="dr-desc">Worked alongside a co-PM to manage the overall project pipeline — organizing tasks in Jira, tracking progress across sub-teams, scheduling around academic workloads, and keeping the team aligned with client expectations throughout the 10-week cycle.</p>
+      </div>
+      <div class="dr-half">
+        <p class="dr-index">02</p>
+        <p class="dr-role-title">UI and UX <em>Sub-team Lead</em></p>
+        <p class="dr-desc">Led the design team from early wireframes through high-fidelity screens. Guided key page designs — homepage, browse page, article profile page, and landing page — while building a shared design system to support developer handoff.</p>
+      </div>
+    </div>
+    <div class="resp-grid">
+      <div class="resp-card reveal reveal-delay-1">
+        <p class="resp-idx">01</p>
+        <p class="resp-name">Task Planning and Tracking</p>
+        <p class="resp-desc">Organized sprint tasks in Jira, monitored progress, and ensured each sub-team had clear next steps throughout the project.</p>
+      </div>
+      <div class="resp-card reveal reveal-delay-2">
+        <p class="resp-idx">02</p>
+        <p class="resp-name">Client Communication</p>
+        <p class="resp-desc">Helped translate UBC Library requirements into actionable team tasks and communicated progress and scope changes regularly.</p>
+      </div>
+      <div class="resp-card reveal reveal-delay-3">
+        <p class="resp-idx">03</p>
+        <p class="resp-name">Design System Leadership</p>
+        <p class="resp-desc">Built a shared component library to keep the interface consistent and reduce ambiguity during developer handoff.</p>
+      </div>
+      <div class="resp-card reveal reveal-delay-4">
+        <p class="resp-idx">04</p>
+        <p class="resp-name">Pipeline Coordination</p>
+        <p class="resp-desc">Redesigned the design-to-development workflow to run in parallel rather than sequentially, reducing waiting time between teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Platform</p>
+    <h2 class="section-title reveal reveal-delay-1">What We Built</h2>
+    <p class="features-intro reveal reveal-delay-2">Instead of presenting academic papers as-is, the platform offered four content formats to support different learning preferences and accessibility needs.</p>
+    <div class="features-grid">
+      <div class="feat-card reveal reveal-delay-1">
+        <p class="feat-icon">Format 01</p>
+        <p class="feat-name">Structured Summaries</p>
+        <p class="feat-desc">AI-generated text summaries that condense complex papers into concise, readable findings without losing the core research intent.</p>
+      </div>
+      <div class="feat-card reveal reveal-delay-2">
+        <p class="feat-icon">Format 02</p>
+        <p class="feat-name">Infographics</p>
+        <p class="feat-desc">Visual breakdowns of key data and concepts, making research accessible for users who engage better with visual information.</p>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <p class="feat-icon">Format 03</p>
+        <p class="feat-name">Audio Podcasts</p>
+        <p class="feat-desc">Listen-friendly audio versions of research content, designed for users who prefer auditory learning or have accessibility needs.</p>
+      </div>
+      <div class="feat-card reveal reveal-delay-4">
+        <p class="feat-icon">Format 04</p>
+        <p class="feat-name">Voice Chat</p>
+        <p class="feat-desc">A mascot-based conversational interface allowing users to ask questions about research content in natural language.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Timeline</p>
+    <h2 class="section-title reveal reveal-delay-1">Development Phases</h2>
+    <div class="sprint-summary reveal reveal-delay-2">
+      <div class="sprint-pill"><span>10</span> Weeks Total</div>
+      <div class="sprint-pill"><span>Weekly</span> Sprint Cycles</div>
+      <div class="sprint-pill"><span>Real</span> Client Feedback</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"><div class="timeline-progress" id="tlProgress"></div></div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-left">
+          <p class="tl-sprint-label">Phase 1</p>
+          <p class="tl-sprint-name">Discovery and Scoping</p>
+          <p class="tl-dates">Weeks 1 and 2</p>
+        </div>
+        <div class="tl-right">
+          <div class="tl-chips">
+            <span class="chip key">Client requirements gathered</span>
+            <span class="chip">Team structure formed</span>
+            <span class="chip">Jira workflow set up</span>
+            <span class="chip">Sprint cadence established</span>
+          </div>
+          <p class="tl-pm-note">Worked with co-PM to map the full 10-week delivery arc against team availability and academic commitments.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-left">
+          <p class="tl-sprint-label">Phase 2</p>
+          <p class="tl-sprint-name">Research and Wireframing</p>
+          <p class="tl-dates">Weeks 2 and 3</p>
+        </div>
+        <div class="tl-right">
+          <div class="tl-chips">
+            <span class="chip key">UX flows mapped</span>
+            <span class="chip">Low-fidelity wireframes</span>
+            <span class="chip">Feature priority defined</span>
+          </div>
+          <p class="tl-pm-note">Led UI/UX team in translating client goals into early wireframes while PM work continued in parallel.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-left">
+          <p class="tl-sprint-label">Phase 3</p>
+          <p class="tl-sprint-name">Design System and Handoff</p>
+          <p class="tl-dates">Weeks 3 to 5</p>
+        </div>
+        <div class="tl-right">
+          <div class="tl-chips">
+            <span class="chip key">Design system built</span>
+            <span class="chip">Dev handoff initiated early</span>
+            <span class="chip">Parallel pipeline unlocked</span>
+          </div>
+          <p class="tl-pm-note">Shifted developers onto wireframes rather than waiting for final designs — this was the key workflow change that protected delivery.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-left">
+          <p class="tl-sprint-label">Phase 4</p>
+          <p class="tl-sprint-name">Build and Integration</p>
+          <p class="tl-dates">Weeks 5 to 8</p>
+        </div>
+        <div class="tl-right">
+          <div class="tl-chips">
+            <span class="chip">AI features integrated</span>
+            <span class="chip key">Design and dev overlapping</span>
+            <span class="chip">Client check-ins ongoing</span>
+          </div>
+          <p class="tl-pm-note">Coordinated between design refinements and active development — ensuring changes were absorbed without restarting work.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-left">
+          <p class="tl-sprint-label">Phase 5</p>
+          <p class="tl-sprint-name">Polish and Delivery</p>
+          <p class="tl-dates">Weeks 8 to 10</p>
+        </div>
+        <div class="tl-right">
+          <div class="tl-chips">
+            <span class="chip">Navigation improvements</span>
+            <span class="chip">Article profile page refined</span>
+            <span class="chip key">Final platform delivered</span>
+          </div>
+          <p class="tl-pm-note">Managed final client presentation and ensured all four content formats were functional and documented for handoff.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Key Challenge</p>
+    <h2 class="section-title reveal reveal-delay-1">Problem and Response</h2>
+    <div class="challenge-block reveal reveal-delay-2">
+      <div class="ch-panel">
+        <p class="ch-panel-label problem">The Problem</p>
+        <p class="ch-panel-title">Design and development were running in sequence, not in parallel</p>
+        <p class="ch-panel-body">The natural instinct was for developers to wait for finalized designs before building. In a 10-week window with a real client, that linear approach would have left too little time for development to produce anything meaningful.</p>
+      </div>
+      <div class="ch-panel">
+        <p class="ch-panel-label response">My Response</p>
+        <p class="ch-panel-title">Adjusted the pipeline so both streams ran at the same time</p>
+        <p class="ch-panel-body">Developers began building from early wireframes while the UI/UX team continued refining the visual design system. This created an overlapping workflow where development moved forward early and design improvements were absorbed as they came — rather than being a blocker.</p>
+      </div>
+      <div class="ch-panel">
+        <p class="ch-panel-label outcome">The Outcome</p>
+        <p class="ch-panel-title">Reduced waiting time and kept both teams moving</p>
+        <p class="ch-panel-body">Communication between design and development improved significantly. The final platform included all four content formats, a refined article profile page, navigation improvements, and a working voice chat experience — delivered on schedule.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Leadership Reflection</p>
+    <h2 class="section-title reveal reveal-delay-1">What I Would Take Forward</h2>
+    <div class="reflection-grid">
+      <div class="refl-card reveal reveal-delay-1">
+        <p class="refl-big-num">01</p>
+        <p class="refl-title">Overlap by Default, Not by Exception</p>
+        <p class="refl-body">The parallel pipeline shift was reactive. On the next project, I would build overlapping design and development phases into the schedule from the start rather than waiting for the bottleneck to appear.</p>
+      </div>
+      <div class="refl-card reveal reveal-delay-2">
+        <p class="refl-big-num">02</p>
+        <p class="refl-title">Involve Developers Earlier in Design</p>
+        <p class="refl-body">Getting developers into early design conversations — before wireframes are finalized — surfaces technical constraints sooner and reduces rework later. Collaboration should start at discovery, not at handoff.</p>
+      </div>
+      <div class="refl-card reveal reveal-delay-3">
+        <p class="refl-big-num">03</p>
+        <p class="refl-title">Flexible Planning Over Fixed Stages</p>
+        <p class="refl-body">A large cross-functional team with a real client requires a schedule that bends. The most valuable skill was recognizing when a plan needed to change and making that call before it became a crisis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom: none; padding-bottom: 0;">
+    <div class="outcome-banner reveal">
+      <div>
+        <p class="ob-eyebrow">Final Outcome</p>
+        <p class="ob-title">An AI research platform delivered to a real client in 10 weeks — with four content formats and a smarter team pipeline.</p>
+      </div>
+      <div class="ob-right">
+        <div class="ob-stat">
+          <p class="ob-num">10</p>
+          <p class="ob-label">Weeks End-to-End</p>
+        </div>
+        <div class="ob-stat">
+          <p class="ob-num">4</p>
+          <p class="ob-label">Content Formats</p>
+        </div>
+        <div class="ob-stat">
+          <p class="ob-num">2</p>
+          <p class="ob-label">Roles Held</p>
+        </div>
+        <div class="ob-stat">
+          <p class="ob-num">✓</p>
+          <p class="ob-label">Client Delivered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span class="footer-brand">Ella Xue — Portfolio</span>
+  <span class="footer-info">Knowledge Translation · UBC Library · 10 Weeks</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const tlItems = document.querySelectorAll('.tl-item');
+const tlObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('active');
+  });
+}, { threshold: 0.4 });
+tlItems.forEach(item => tlObserver.observe(item));
+
+window.addEventListener('scroll', () => {
+  const tl = document.querySelector('.timeline');
+  if (!tl) return;
+  const rect = tl.getBoundingClientRect();
+  const pct = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)));
+  const prog = document.getElementById('tlProgress');
+  if (prog) prog.style.height = (pct * 100) + '%';
+});
+</script>
+</body>
+</html>
