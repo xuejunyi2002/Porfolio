@@ -136,48 +136,31 @@ tabBtns.forEach(btn => {
    ============================================================ */
 (function initScrollHero() {
   const container  = document.getElementById('heroScroll');
-  const nameTrack  = document.getElementById('hsNameTrack');
   const hsIm       = document.getElementById('hsIm');
   const descA      = document.getElementById('hsDescA');
   const descB      = document.getElementById('hsDescB');
   const photoWrap  = document.getElementById('hsPhotoWrap');
   const scrollHint = document.getElementById('hsScrollHint');
-  if (!container || !nameTrack) return;
+  if (!container || !hsIm) return;
 
-  /* Clear any stale inline background set by a previous JS version */
+  /* Clear any stale inline styles from old JS versions */
   const stickyEl = document.getElementById('heroSticky');
   if (stickyEl) stickyEl.style.backgroundColor = '';
+  const nameTrack = document.getElementById('hsNameTrack');
+  if (nameTrack) nameTrack.style.transform = '';
 
   function eio(t) { return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
   function clamp(v,lo,hi) { return Math.min(hi,Math.max(lo,v)); }
   function prog(p,s,e) { return clamp((p-s)/(e-s),0,1); }
 
-  /* Measure how far to slide so ELLA lands at the left padding edge.
-     Done at natural position (no transform) and cached per viewport width. */
-  let cachedVW=0, cachedShift=0;
-  function getShift() {
-    const vw = window.innerWidth;
-    if (vw !== cachedVW) {
-      const prev = nameTrack.style.transform;
-      nameTrack.style.transform = 'none';
-      const ellaEl = document.getElementById('hsElla');
-      const ellaLeft = ellaEl ? ellaEl.getBoundingClientRect().left : 0;
-      nameTrack.style.transform = prev;
-      cachedShift = -(ellaLeft - 0.04 * vw); // slide until ELLA sits at 4vw from left
-      cachedVW = vw;
-    }
-    return cachedShift;
-  }
-
   function update() {
     const rect = container.getBoundingClientRect();
     const p = clamp(-rect.top / (container.offsetHeight - window.innerHeight), 0, 1);
 
-    /* name slides centre → left */
-    nameTrack.style.transform = `translateX(${getShift() * eio(prog(p,0,0.75))}px)`;
-
-    /* "I'M " fades out */
-    hsIm.style.opacity = clamp(1 - p / 0.45, 0, 1);
+    /* "I'M" fades out and lifts slightly */
+    const imP = clamp(p / 0.45, 0, 1);
+    hsIm.style.opacity = 1 - imP;
+    hsIm.style.transform = `translateY(${-imP * 18}px)`;
 
     /* description crossfade */
     descA.style.opacity = clamp(1 - p / 0.35, 0, 1);
