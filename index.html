@@ -50,65 +50,46 @@
 <main>
 
 <!-- ============================================================ HERO -->
-<section id="home" class="hero">
-  <div class="doodle doodle--star-1 parallax" data-speed="0.04" aria-hidden="true">
-    <svg viewBox="0 0 40 40" fill="none"><path d="M20 4 L22 17 L35 12 L25 21 L36 28 L23 25 L22 38 L18 26 L6 32 L15 22 L4 16 L17 19 Z" stroke="var(--yellow)" stroke-width="1.2" stroke-linejoin="round" fill="none"/></svg>
-  </div>
-  <div class="doodle doodle--circle-1 parallax" data-speed="0.06" aria-hidden="true">
-    <svg viewBox="0 0 60 60" fill="none"><path d="M30 6 C48 5,56 18,54 30 C52 44,40 56,28 54 C14 52,4 40,6 28 C8 14,18 4,30 6 Z" stroke="var(--blue)" stroke-width="1.2" fill="none"/></svg>
-  </div>
-  <div class="doodle doodle--squiggle parallax" data-speed="0.03" aria-hidden="true">
-    <svg viewBox="0 0 80 20" fill="none"><path d="M2 10 C10 4,18 16,26 10 C34 4,42 16,50 10 C58 4,66 16,74 10" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-  </div>
-  <div class="doodle doodle--dot-cluster parallax" data-speed="0.05" aria-hidden="true">
-    <svg viewBox="0 0 30 30" fill="none">
-      <circle cx="6"  cy="6"  r="2"   fill="var(--yellow)" opacity="0.7"/>
-      <circle cx="15" cy="4"  r="1.5" fill="var(--coral)"  opacity="0.6"/>
-      <circle cx="24" cy="9"  r="2.5" fill="var(--blue)"   opacity="0.5"/>
-      <circle cx="10" cy="18" r="1.5" fill="var(--yellow)" opacity="0.8"/>
-      <circle cx="22" cy="22" r="2"   fill="var(--coral)"  opacity="0.4"/>
-    </svg>
-  </div>
+<div class="hero-scroll-container" id="heroScroll">
+  <div class="hero-sticky">
 
-  <span class="hero-bg-text" aria-hidden="true">ELLA</span>
-
-  <div class="hero-layout">
-    <div class="hero-portrait">
-      <div class="portrait-frame">
-        <svg class="frame-svg" viewBox="0 0 220 280" fill="none" aria-hidden="true">
-          <path d="M12 20 C10 10,20 8,30 10 L190 10 C202 10,210 18,210 28 L210 252 C210 264,200 270,190 268 L30 268 C18 268,10 260,12 250 Z" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3" fill="none" opacity="0.3"/>
-        </svg>
-        <div class="portrait-inner">
-          <!-- Replace with <img src="assets/photo.jpg" alt="Ella Xue"> -->
-          <div class="portrait-initials">EX</div>
-        </div>
-      </div>
-      <div class="portrait-annotation" aria-hidden="true">
-        <svg viewBox="0 0 60 20" fill="none" class="annotation-arrow">
-          <path d="M4 10 C20 4,40 14,56 8" stroke="var(--ink-muted)" stroke-width="1" stroke-linecap="round" fill="none"/>
-          <path d="M50 4 L56 8 L50 13" stroke="var(--ink-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <span>that's me ↑</span>
-      </div>
-    </div>
-
-    <div class="hero-text">
-      <span class="hero-label reveal">digital project manager</span>
-      <h1 class="hero-heading reveal">
-        Hi, I'm<br/><em>Ella!</em>
-      </h1>
-      <p class="hero-sub reveal">I bridge creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
-      <div class="hero-cta-group reveal">
+    <!-- Light base layer (warm bg, dark text) -->
+    <div class="hs-text-block hs-light">
+      <span class="hs-eyebrow">Digital Project Manager</span>
+      <h1 class="hs-name">Ella<br><em>Xue</em></h1>
+      <p class="hs-sub">I bridge creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
+      <div class="hs-actions">
         <a href="projects.html" class="btn btn-primary">See My Work</a>
         <a href="about.html"   class="btn btn-outline">About Me</a>
       </div>
     </div>
-  </div>
 
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    <!-- Dark panel (text-inversion layer, width driven by scroll) -->
+    <div class="hs-dark-panel" id="hsDarkPanel">
+      <div class="hs-dark-inner">
+        <span class="hs-eyebrow">Digital Project Manager</span>
+        <h1 class="hs-name">Ella<br><em>Xue</em></h1>
+        <p class="hs-sub">I bridge creativity and execution — managing game projects, digital products, and cross-functional teams from idea to delivery.</p>
+        <div class="hs-actions">
+          <a href="projects.html" class="btn btn-primary">See My Work</a>
+          <a href="about.html"   class="btn btn-outline">About Me</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo (right side, opacity driven by scroll) -->
+    <div class="hs-photo-wrap" id="hsPhotoWrap">
+      <img src="assets/ella.jpg" alt="Ella Xue">
+      <span class="hs-photo-tag">hi, that's me :)</span>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hs-scroll-hint" aria-hidden="true">
+      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    </div>
+
   </div>
-</section>
+</div>
 
 <!-- ============================================================ PM TRAITS -->
 <section class="section">

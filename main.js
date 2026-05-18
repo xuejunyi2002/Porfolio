@@ -132,6 +132,41 @@ tabBtns.forEach(btn => {
 });
 
 /* ============================================================
+   SCROLL HERO
+   ============================================================ */
+(function initScrollHero() {
+  const container = document.getElementById('heroScroll');
+  const darkPanel = document.getElementById('hsDarkPanel');
+  const photoWrap = document.getElementById('hsPhotoWrap');
+  if (!container || !darkPanel) return;
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  function update() {
+    const rect = container.getBoundingClientRect();
+    const scrollable = container.offsetHeight - window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const progress = Math.min(1, scrolled / scrollable);
+
+    // Dark panel: 0 → 52vw as progress 0 → 0.65
+    const panelProg = easeInOut(Math.min(1, progress / 0.65));
+    darkPanel.style.width = (panelProg * 52) + 'vw';
+
+    // Photo: fades/slides in as progress 0.15 → 0.55
+    if (photoWrap) {
+      const photoProg = Math.max(0, Math.min(1, (progress - 0.15) / 0.4));
+      photoWrap.style.opacity = photoProg;
+      photoWrap.style.transform = `translateX(${(1 - photoProg) * 2.5}rem)`;
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* ============================================================
    CONTACT FORM
    ============================================================ */
 const form = document.getElementById('contactForm');
