@@ -257,17 +257,24 @@ button { font-family: var(--font-sans); }
   padding-top: var(--nav-h);
 }
 
-/* Upper — left-aligned at 4vw (same as lower section), pushed toward bottom */
+/* Upper — left-aligned at 4vw, pushed toward bottom of its flex cell */
 .hs-upper {
   flex: 1; display: flex;
   align-items: flex-end; justify-content: flex-start;
-  padding: 0 4vw 2rem;
+  padding: 0 4vw clamp(0.75rem, 2vh, 2rem);
   min-height: 0;
 }
 .hs-name-track { will-change: transform; }
+
+/*
+  Font scales smoothly with vw between a sensible min and max.
+  At 1280px laptop : 20vw ≈ 16rem — proportional, not overwhelming.
+  At 1440px desktop: 20vw ≈ 18rem — dramatic but not clipping.
+  At 1920px monitor: capped at 22rem — consistent on large displays.
+*/
 .hs-big-name {
   font-family: var(--font-serif);
-  font-size: clamp(10rem, 28vw, 28rem);
+  font-size: clamp(6.5rem, 20vw, 22rem);
   font-weight: 600; line-height: 1;
   letter-spacing: -0.03em; white-space: nowrap;
   color: var(--ink); margin: 0;
@@ -276,9 +283,9 @@ button { font-family: var(--font-sans); }
 
 /* Lower — eyebrow + descriptions + buttons */
 .hs-lower {
-  padding: 1.5rem 4vw 2.5rem;
-  max-width: 58vw;
-  display: flex; flex-direction: column; gap: 1.1rem;
+  padding: clamp(0.85rem, 1.5vh, 1.5rem) 4vw clamp(1.25rem, 2.5vh, 2.5rem);
+  max-width: 56vw;
+  display: flex; flex-direction: column; gap: clamp(0.7rem, 1.2vh, 1.1rem);
 }
 .hs-eyebrow {
   display: block; font-size: 0.88rem; font-weight: 600;
@@ -287,25 +294,29 @@ button { font-family: var(--font-sans); }
 .hs-desc-wrap { position: relative; }
 .hs-desc {
   font-family: var(--font-sans);
-  font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+  font-size: clamp(1rem, 2.1vw, 1.6rem);
   font-weight: 300; line-height: 1.5;
   color: var(--ink); margin: 0; will-change: opacity;
 }
 .hs-desc--b { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
 .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Photo — contained card, not full-bleed */
+/*
+  Photo scales proportionally with the viewport.
+  Right-gutter matches the 4vw left-gutter so edges feel balanced.
+  Height uses vh so it stays in proportion on shorter laptop screens.
+*/
 .hs-photo-wrap {
   position: absolute; right: 4vw;
-  top: calc(var(--nav-h) + 5rem);
-  width: 32vw; height: 70vh;
+  top: calc(var(--nav-h) + clamp(2rem, 5vh, 5rem));
+  width: 28vw; height: clamp(240px, 62vh, 520px);
   overflow: hidden; opacity: 0;
   will-change: opacity, transform;
 }
 .hs-photo-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  height: calc(100% + 2.5rem); margin-top: -2.5rem; display: block;
+  width: 100%;
+  height: calc(100% + 2.5rem); margin-top: -2.5rem;
+  object-fit: cover; object-position: center top; display: block;
 }
 .hs-photo-tag {
   position: absolute; bottom: 1.5rem; left: 1.5rem;
@@ -323,11 +334,20 @@ button { font-family: var(--font-sans); }
 .scroll-thumb { position: absolute; top: 0; left: 0; width: 100%; height: 40%; background: var(--ink-faint); animation: scrollDown 2.2s ease-in-out infinite; }
 @keyframes scrollDown { 0% { top: -40%; } 100% { top: 140%; } }
 
+/* Tablet / small laptop: tighten spacing, keep layout intact */
+@media (max-width: 1024px) {
+  .hs-big-name { font-size: clamp(5.5rem, 18vw, 18rem); }
+  .hs-photo-wrap { width: 30vw; }
+  .hs-lower { max-width: 58vw; }
+}
+
+/* Mobile: stack-friendly — hide photo, give text full room */
 @media (max-width: 640px) {
-  .hs-upper { padding: 0 5vw 2rem; }
-  .hs-big-name { font-size: clamp(5.5rem, 22vw, 10rem); }
-  .hs-lower { max-width: 92vw; padding: 1.25rem 5vw 2rem; }
-  .hs-photo-wrap { width: 48vw; height: 50vh; right: 2vw; top: calc(var(--nav-h) + 3rem); }
+  .hs-upper { padding: 0 5vw 1.25rem; }
+  .hs-big-name { font-size: clamp(4rem, 18vw, 6.5rem); }
+  .hs-lower { max-width: 90vw; padding: 1rem 5vw 2rem; gap: 0.85rem; }
+  .hs-photo-wrap { display: none; }
+  .hs-desc { font-size: clamp(1rem, 4.5vw, 1.25rem); }
 }
 
 /* ============================================================
