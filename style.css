@@ -261,14 +261,14 @@ button { font-family: var(--font-sans); }
 .hs-upper {
   flex: 1; display: flex;
   align-items: flex-end; justify-content: flex-start;
-  padding: 0 4vw 3rem;
-  min-height: 0; overflow: hidden;
+  padding: 0 4vw 2rem;
+  min-height: 0;
 }
 .hs-name-track { will-change: transform; }
 .hs-big-name {
   font-family: var(--font-serif);
-  font-size: clamp(9rem, 24vw, 24rem);
-  font-weight: 600; line-height: 0.9;
+  font-size: clamp(10rem, 28vw, 28rem);
+  font-weight: 600; line-height: 1;
   letter-spacing: -0.03em; white-space: nowrap;
   color: var(--ink); margin: 0;
 }
@@ -324,7 +324,7 @@ button { font-family: var(--font-sans); }
 
 @media (max-width: 640px) {
   .hs-upper { padding: 0 5vw 2rem; }
-  .hs-big-name { font-size: clamp(5rem, 20vw, 9rem); }
+  .hs-big-name { font-size: clamp(5.5rem, 22vw, 10rem); }
   .hs-lower { max-width: 92vw; padding: 1.25rem 5vw 2rem; }
   .hs-photo-wrap { width: 48vw; height: 50vh; right: 2vw; top: calc(var(--nav-h) + 3rem); }
 }
