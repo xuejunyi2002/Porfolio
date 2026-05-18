@@ -270,7 +270,7 @@ button { font-family: var(--font-sans); }
 /* ELLA — the layout anchor and visible text */
 .hs-ella {
   font-family: var(--font-serif);
-  font-size: clamp(7rem, 17vw, 17rem);
+  font-size: clamp(8rem, 21vw, 21rem);
   font-weight: 600; line-height: 0.92;
   letter-spacing: -0.03em; white-space: nowrap;
   color: var(--ink); display: block; margin: 0;
@@ -280,7 +280,7 @@ button { font-family: var(--font-sans); }
   position: absolute; right: 100%; bottom: 0;
   padding-right: 0.15em;
   font-family: var(--font-serif);
-  font-size: clamp(7rem, 17vw, 17rem);
+  font-size: clamp(8rem, 21vw, 21rem);
   font-weight: 600; line-height: 0.92;
   letter-spacing: -0.03em; white-space: nowrap;
   color: var(--ink); will-change: opacity;
@@ -344,7 +344,7 @@ button { font-family: var(--font-sans); }
 
 @media (max-width: 640px) {
   .hs-upper { justify-content: flex-start; padding: 0 5vw; }
-  .hs-ella, .hs-im { font-size: clamp(4.5rem, 17vw, 8rem); }
+  .hs-ella, .hs-im { font-size: clamp(5rem, 20vw, 9rem); }
   .hs-lower { max-width: 92vw; padding: 1.25rem 5vw 2rem; }
   .hs-photo-wrap { width: 48vw; height: 55vh; right: 2vw; top: calc(var(--nav-h) + 1rem); }
 }
