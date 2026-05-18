@@ -10,8 +10,8 @@
   --ink:         #1c1a18;
   --ink-muted:   #7a746c;
   --ink-faint:   #b8b2aa;
-  --coral:       #6B705C;
-  --coral-light: #e6e9e2;
+  --coral:       #7E9CCB;
+  --coral-light: #e8eef8;
   --yellow:      #e8b84b;
   --blue:        #7aafc2;
   --teal:        #5a8f7a;
@@ -302,14 +302,15 @@ button { font-family: var(--font-sans); }
 .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /*
-  Photo scales proportionally with the viewport.
-  Right-gutter matches the 4vw left-gutter so edges feel balanced.
-  Height uses vh so it stays in proportion on shorter laptop screens.
+  Width drives everything. min() caps it so height never exceeds 70vh
+  at any viewport (3/4 ratio: width = height × 0.75).
+  aspect-ratio locks the frame shape across all screen sizes.
 */
 .hs-photo-wrap {
   position: absolute; right: 4vw;
   top: calc(var(--nav-h) + clamp(2rem, 5vh, 5rem));
-  width: 28vw; height: clamp(240px, 62vh, 520px);
+  width: min(28vw, calc(70vh * 0.75));
+  aspect-ratio: 3 / 4;
   overflow: hidden; opacity: 0;
   will-change: opacity, transform;
 }
@@ -337,7 +338,7 @@ button { font-family: var(--font-sans); }
 /* Tablet / small laptop: tighten spacing, keep layout intact */
 @media (max-width: 1024px) {
   .hs-big-name { font-size: clamp(5.5rem, 18vw, 18rem); }
-  .hs-photo-wrap { width: 30vw; }
+  .hs-photo-wrap { width: min(30vw, calc(68vh * 0.75)); }
   .hs-lower { max-width: 58vw; }
 }
 
