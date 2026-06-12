@@ -1027,20 +1027,15 @@ button { font-family: var(--font-body); }
 
 /* --- Project snapshot grid --- */
 .snapshot-row {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--surface);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
 }
 .snap-cell {
-  padding: 1.4rem 1.5rem;
-  border-right: 1px solid var(--border);
-  transition: background 0.2s;
+  padding: 0;
+  margin-right: 3rem;
+  margin-bottom: 1.2rem;
 }
-.snap-cell:last-child { border-right: none; }
-.snap-cell:hover { background: var(--bg-2); }
 .snap-key {
   font-size: 0.62rem;
   font-weight: 600;
