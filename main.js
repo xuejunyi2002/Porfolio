@@ -189,6 +189,10 @@ tabBtns.forEach(btn => {
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', () => { cachedImWidth = 0; update(); });
   update();
+
+  // Re-measure after Google Fonts load — fallback font has a different width,
+  // which causes ELLA to land at the wrong left edge if cached too early.
+  document.fonts.ready.then(() => { cachedImWidth = 0; update(); });
 })();
 
 /* ============================================================
