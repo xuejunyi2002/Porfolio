@@ -924,12 +924,19 @@ button { font-family: var(--font-body); }
   width: 100%;
   height: 100vh;
   min-height: 480px;
-  background-size: cover;
-  background-position: center;
   background-color: var(--bg-2);
   display: flex;
   align-items: flex-end;
   padding: 0 4vw 3.5rem;
+  overflow: hidden;
+}
+.proj-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .proj-cover::after {
   content: '';
@@ -965,7 +972,7 @@ button { font-family: var(--font-body); }
 .proj-hero-below {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 4rem 2.5rem 5rem;
+  padding: 4rem 4vw 5rem;
   border-bottom: 1px solid var(--border);
 }
 .proj-wrap {
