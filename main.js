@@ -192,6 +192,31 @@ tabBtns.forEach(btn => {
 })();
 
 /* ============================================================
+   TIMELINE (project pages)
+   ============================================================ */
+(function initTimeline() {
+  const timeline   = document.querySelector('.timeline');
+  const tlProgress = document.getElementById('tlProgress');
+  if (!timeline) return;
+
+  const tlItems = document.querySelectorAll('.tl-item');
+  const dotObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+  }, { threshold: 0.4 });
+  tlItems.forEach(item => dotObserver.observe(item));
+
+  if (tlProgress) {
+    window.addEventListener('scroll', () => {
+      const rect = timeline.getBoundingClientRect();
+      const pct  = Math.max(0, Math.min(1,
+        (window.innerHeight - rect.top) / (rect.height + window.innerHeight)
+      ));
+      tlProgress.style.height = (pct * 100) + '%';
+    }, { passive: true });
+  }
+})();
+
+/* ============================================================
    CONTACT FORM
    ============================================================ */
 const form = document.getElementById('contactForm');
