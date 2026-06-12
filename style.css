@@ -919,10 +919,53 @@ button { font-family: var(--font-body); }
 }
 
 /* --- Layout --- */
+.proj-cover {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-2);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 4vw 3.5rem;
+}
+.proj-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 45%, transparent 75%);
+  pointer-events: none;
+}
+.proj-cover-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.proj-cover-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  color: #fff;
+}
+
 .proj-hero {
   padding: calc(var(--nav-h) + 4rem) 2.5rem 5rem;
   max-width: var(--max-w);
   margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.proj-hero-below {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 4rem 2.5rem 5rem;
   border-bottom: 1px solid var(--border);
 }
 .proj-wrap {
@@ -1765,6 +1808,8 @@ button { font-family: var(--font-body); }
 /* --- Project pages responsive --- */
 @media (max-width: 900px) {
   .proj-hero  { padding: calc(var(--nav-h) + 3rem) 1.5rem 4rem; }
+  .proj-hero-below { padding: 3rem 1.5rem 4rem; }
+  .proj-cover { padding: 0 1.5rem 3rem; }
   .proj-wrap  { padding: 0 1.5rem; }
   .snapshot-row { grid-template-columns: repeat(2, 1fr); }
   .role-grid  { grid-template-columns: 1fr; }
