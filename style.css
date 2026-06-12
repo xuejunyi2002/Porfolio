@@ -4,25 +4,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:          #faf9f7;
-  --bg-2:        #f3f1ee;
+  --bg:          #f8f8f6;
+  --bg-2:        #f0f0ee;
   --surface:     #ffffff;
-  --ink:         #1c1a18;
-  --ink-muted:   #7a746c;
-  --ink-faint:   #b8b2aa;
-  --coral:       #7E9CCB;
-  --coral-light: #e8eef8;
+  --ink:         #111111;
+  --ink-muted:   #666666;
+  --ink-faint:   #aaaaaa;
+  --coral:       #444444;
+  --coral-light: #ebebeb;
   --yellow:      #e8b84b;
   --blue:        #7aafc2;
-  --teal:        #5a8f7a;
-  --teal-light:  #e0ede8;
-  --border:      #ddd9d2;
-  --border-2:    #c8c2ba;
+  --teal:        #4a7a6a;
+  --teal-light:  #e2ede9;
+  --border:      #e0e0de;
+  --border-2:    #c8c8c6;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-sans:    'Inter', system-ui, sans-serif;
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, sans-serif;
-  --font-accent:  'Cormorant Garamond', Georgia, serif;
+  --font-accent:  'Inter', system-ui, sans-serif;
   --max-w:       1100px;
   --nav-h:       66px;
   --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -38,7 +38,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -46,7 +46,7 @@ body {
 ::selection { background: var(--coral); color: #fff; }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-heading); line-height: 1.15; font-weight: 600;
+  font-family: var(--font-heading); line-height: 1.15; font-weight: 700;
   font-style: normal;
 }
 em { font-style: normal; }
@@ -95,7 +95,8 @@ button { font-family: var(--font-body); }
 
 .logo {
   display: flex; align-items: center; gap: 0.55rem;
-  font-family: var(--font-serif); font-size: 1.1rem;
+  font-family: var(--font-sans); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--ink); transition: opacity 0.2s;
 }
 .logo:hover { opacity: 0.65; }
@@ -155,7 +156,7 @@ button { font-family: var(--font-body); }
 /* ============================================================
    SECTION RHYTHM
    ============================================================ */
-.section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+.section { padding: 8rem 0; border-bottom: 1px solid var(--border); }
 .section:last-child { border-bottom: none; }
 .section--alt { background: var(--bg-2); }
 
@@ -165,12 +166,12 @@ button { font-family: var(--font-body); }
   color: var(--coral); margin-bottom: 0.75rem;
 }
 .section-heading {
-  font-family: var(--font-heading); font-size: clamp(1.9rem, 3.5vw, 2.7rem);
-  font-weight: 600; color: var(--ink); line-height: 1.1;
-  letter-spacing: -0.01em; margin-bottom: 2.5rem; font-style: normal;
+  font-family: var(--font-heading); font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 700; color: var(--ink); line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 2.5rem; font-style: normal;
 }
 .section-lead {
-  font-size: 1rem; font-weight: 300; color: var(--ink-muted);
+  font-size: 1rem; font-weight: 400; color: var(--ink-muted);
   max-width: 540px; line-height: 1.8; margin-bottom: 2.5rem;
 }
 
@@ -388,8 +389,8 @@ button { font-family: var(--font-body); }
 .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 
 .tab-text h3 {
-  font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 400; color: var(--ink); margin-bottom: 1rem; line-height: 1.2;
+  font-family: var(--font-heading); font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700; color: var(--ink); margin-bottom: 1rem; line-height: 1.15;
 }
 .tab-text p { font-size: 0.94rem; line-height: 1.82; margin-bottom: 1.25rem; }
 
@@ -432,10 +433,10 @@ button { font-family: var(--font-body); }
 }
 .feat-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden;
+  border-radius: 6px; overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s;
 }
-.feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.07); }
+.feat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
 .feat-card--large { }
 .feat-thumb {
   aspect-ratio: 16/9; display: flex; align-items: flex-end; padding: 1rem;
@@ -454,7 +455,7 @@ button { font-family: var(--font-body); }
   text-transform: uppercase; color: var(--coral); margin-bottom: 0.4rem; display: block;
 }
 .feat-title {
-  font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600;
+  font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700;
   color: var(--ink); margin-bottom: 0.5rem;
 }
 .feat-desc { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; }
@@ -470,10 +471,10 @@ button { font-family: var(--font-body); }
 }
 .testimonial-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 2rem;
+  border-radius: 6px; padding: 2rem;
   transition: box-shadow 0.3s, transform 0.3s;
 }
-.testimonial-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.testimonial-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
 .quote-mark {
   font-family: var(--font-serif); font-size: 3.5rem; font-weight: 700;
   color: var(--border); line-height: 0.8; margin-bottom: 1rem; display: block;
@@ -500,8 +501,8 @@ button { font-family: var(--font-body); }
 }
 .banner-tagline {
   font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 400; color: #fff;
-  max-width: 600px; line-height: 1.3; margin-bottom: 2rem;
+  font-weight: 700; color: #fff; letter-spacing: -0.02em;
+  max-width: 600px; line-height: 1.2; margin-bottom: 2rem;
 }
 .banner-email {
   font-family: var(--font-body); font-size: clamp(1rem, 2.2vw, 1.45rem);
@@ -529,8 +530,8 @@ button { font-family: var(--font-body); }
 }
 .about-avatar .portrait-inner { aspect-ratio: 3/4; }
 .about-lead {
-  font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 400; line-height: 1.55; color: var(--ink); margin-bottom: 1.5rem;
+  font-family: var(--font-heading); font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 600; line-height: 1.45; color: var(--ink); margin-bottom: 1.5rem;
 }
 .about-body { font-size: 0.94rem; line-height: 1.82; margin-bottom: 1.25rem; }
 .about-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
@@ -549,7 +550,7 @@ button { font-family: var(--font-body); }
   color: var(--border); line-height: 1; margin-bottom: 1rem;
 }
 .why-title {
-  font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600;
+  font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;
   color: var(--ink); margin-bottom: 0.85rem;
 }
 .why-body { font-size: 0.9rem; line-height: 1.8; }
@@ -633,10 +634,10 @@ button { font-family: var(--font-body); }
 .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
 .project-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden;
+  border-radius: 6px; overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s;
 }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(0,0,0,0.08); }
+.project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.08); }
 .project-card[hidden] { display: none; }
 .proj-thumb {
   aspect-ratio: 16/9; position: relative;
@@ -662,7 +663,7 @@ button { font-family: var(--font-body); }
 }
 .proj-year { font-size: 0.7rem; color: var(--ink-faint); }
 .proj-title {
-  font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600;
+  font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
   color: var(--ink); margin-bottom: 0.5rem;
 }
 .proj-desc { font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.1rem; }
@@ -731,8 +732,8 @@ button { font-family: var(--font-body); }
 }
 .page-hero-title {
   font-family: var(--font-heading); font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 500; color: var(--ink); line-height: 1.05;
-  margin-bottom: 1rem; letter-spacing: -0.01em;
+  font-weight: 700; color: var(--ink); line-height: 1.0;
+  margin-bottom: 1rem; letter-spacing: -0.03em;
 }
 .page-hero-title em { font-weight: 300; color: var(--coral); }
 .page-hero-sub {
@@ -768,7 +769,7 @@ button { font-family: var(--font-body); }
   .mobile-nav { top: 60px; }
   .container { padding: 0 1.5rem; }
   .hero-layout { padding: 2rem 1.5rem 4rem; }
-  .section { padding: 4.5rem 0; }
+  .section { padding: 5.5rem 0; }
   .page-hero { padding: calc(var(--nav-h) + 3rem) 0 3rem; }
   .tabs-nav { overflow-x: auto; }
   .tab-btn { padding: 0.85rem 1.25rem; white-space: nowrap; }
@@ -860,11 +861,11 @@ button { font-family: var(--font-body); }
 
 /* --- Hero title and subtitle --- */
 .proj-hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 7vw, 6rem);
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
   line-height: 1.0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
   color: var(--ink);
   margin-bottom: 1.25rem;
   max-width: 720px;
@@ -901,11 +902,12 @@ button { font-family: var(--font-body); }
 .stat-box:last-child { border-right: none; }
 .stat-box:hover { background: var(--bg-2); }
 .stat-num {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 .stat-label {
   font-size: 0.65rem;
@@ -1058,8 +1060,8 @@ button { font-family: var(--font-body); }
   gap: 5px;
 }
 .sprint-pill strong {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
   font-weight: 700;
   color: var(--coral);
 }
@@ -1118,9 +1120,9 @@ button { font-family: var(--font-body); }
   display: block;
 }
 .tl-sprint-name {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--ink);
   line-height: 1.2;
   margin-bottom: 3px;
@@ -1259,12 +1261,13 @@ button { font-family: var(--font-body); }
 .test-card.green::before   { background: var(--teal); }
 .test-card.neutral::before { background: var(--ink-faint); }
 .test-big {
-  font-family: var(--font-serif);
-  font-size: 2.6rem;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1;
   margin-bottom: 6px;
+  letter-spacing: -0.02em;
 }
 .test-label {
   font-size: 0.65rem;
@@ -1341,9 +1344,9 @@ button { font-family: var(--font-body); }
   display: block;
 }
 .pt-title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--ink);
   margin-bottom: 1rem;
   line-height: 1.2;
@@ -1384,9 +1387,9 @@ button { font-family: var(--font-body); }
   display: block;
 }
 .dr-role-title {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--ink);
   line-height: 1.15;
   margin-bottom: 1rem;
@@ -1480,9 +1483,9 @@ button { font-family: var(--font-body); }
 .ch-panel-label.response { color: var(--ink-faint); }
 .ch-panel-label.outcome  { color: var(--coral); }
 .ch-panel-title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--ink);
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -1535,9 +1538,9 @@ button { font-family: var(--font-body); }
   display: block;
 }
 .ob-title {
-  font-family: var(--font-serif);
-  font-size: 1.9rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #fff;
   line-height: 1.2;
 }
@@ -1553,12 +1556,13 @@ button { font-family: var(--font-body); }
 .ob-stat { background: rgba(255,255,255,0.03); padding: 1.3rem; transition: background 0.2s; }
 .ob-stat:hover { background: rgba(255,255,255,0.07); }
 .ob-num {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
   line-height: 1;
   margin-bottom: 3px;
+  letter-spacing: -0.02em;
 }
 .ob-label {
   font-size: 0.62rem;
