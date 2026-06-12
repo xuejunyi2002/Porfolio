@@ -18,8 +18,11 @@
   --teal-light:  #e0ede8;
   --border:      #ddd9d2;
   --border-2:    #c8c2ba;
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-accent:  'Cormorant Garamond', Georgia, serif;
   --max-w:       1100px;
   --nav-h:       66px;
   --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -42,12 +45,15 @@ body {
 
 ::selection { background: var(--coral); color: #fff; }
 
-h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.15; font-weight: 600; }
+h1, h2, h3, h4 {
+  font-family: var(--font-heading); line-height: 1.15; font-weight: 600;
+  font-style: normal;
+}
 p { color: var(--ink-muted); }
 p:last-child { margin-bottom: 0; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
-button { font-family: var(--font-sans); }
+button { font-family: var(--font-body); }
 
 /* ============================================================
    CURSOR
@@ -133,8 +139,8 @@ button { font-family: var(--font-sans); }
 .mobile-nav.open { transform: translateX(0); }
 .mobile-nav nav { display: flex; flex-direction: column; }
 .mobile-nav-link {
-  font-family: var(--font-serif); font-size: 2.2rem; font-style: italic;
-  font-weight: 300; color: var(--ink); padding: 0.75rem 0;
+  font-family: var(--font-heading); font-size: 2.2rem;
+  font-weight: 400; color: var(--ink); padding: 0.75rem 0;
   border-bottom: 1px solid var(--border); transition: color 0.2s;
 }
 .mobile-nav-link:hover { color: var(--coral); }
@@ -158,9 +164,9 @@ button { font-family: var(--font-sans); }
   color: var(--coral); margin-bottom: 0.75rem;
 }
 .section-heading {
-  font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  font-family: var(--font-heading); font-size: clamp(1.9rem, 3.5vw, 2.7rem);
   font-weight: 600; color: var(--ink); line-height: 1.1;
-  letter-spacing: -0.01em; margin-bottom: 2.5rem;
+  letter-spacing: -0.01em; margin-bottom: 2.5rem; font-style: normal;
 }
 .section-lead {
   font-size: 1rem; font-weight: 300; color: var(--ink-muted);
@@ -235,8 +241,8 @@ button { font-family: var(--font-sans); }
   flex-wrap: wrap; gap: 1rem;
 }
 .footer-brand {
-  font-family: var(--font-serif); font-size: 0.95rem;
-  font-style: italic; color: var(--ink-muted);
+  font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
 }
 .footer-links { display: flex; gap: 1.75rem; }
 .footer-links a {
@@ -472,8 +478,8 @@ button { font-family: var(--font-sans); }
   color: var(--border); line-height: 0.8; margin-bottom: 1rem; display: block;
 }
 .quote-text {
-  font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400;
-  font-style: italic; color: var(--ink); line-height: 1.6; margin-bottom: 1.5rem;
+  font-family: var(--font-accent); font-size: 1.1rem; font-weight: 400;
+  color: var(--ink); line-height: 1.65; margin-bottom: 1.5rem;
 }
 .quote-author {
   display: flex; flex-direction: column; gap: 2px;
@@ -492,16 +498,17 @@ button { font-family: var(--font-sans); }
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .banner-tagline {
-  font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 300; font-style: italic; color: #fff;
+  font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400; color: #fff;
   max-width: 600px; line-height: 1.3; margin-bottom: 2rem;
 }
 .banner-email {
-  font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 2.5rem;
+  font-family: var(--font-body); font-size: clamp(1rem, 2.2vw, 1.45rem);
+  font-weight: 400; letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.75); margin-bottom: 2.5rem;
   transition: color 0.2s;
 }
-.banner-email:hover { color: var(--yellow); }
+.banner-email:hover { color: #fff; }
 .banner-socials { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
 .banner-social-link {
   font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
@@ -521,8 +528,8 @@ button { font-family: var(--font-sans); }
 }
 .about-avatar .portrait-inner { aspect-ratio: 3/4; }
 .about-lead {
-  font-family: var(--font-serif); font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 300; line-height: 1.5; color: var(--ink); margin-bottom: 1.5rem;
+  font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 400; line-height: 1.55; color: var(--ink); margin-bottom: 1.5rem;
 }
 .about-body { font-size: 0.94rem; line-height: 1.82; margin-bottom: 1.25rem; }
 .about-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
@@ -670,12 +677,13 @@ button { font-family: var(--font-sans); }
    ============================================================ */
 .contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
 .contact-lead {
-  font-family: var(--font-serif); font-size: clamp(1.2rem,2.5vw,1.8rem);
-  font-weight: 300; line-height: 1.5; color: var(--ink); margin-bottom: 1.5rem;
+  font-family: var(--font-body); font-size: clamp(0.94rem, 1.8vw, 1.05rem);
+  font-weight: 300; line-height: 1.85; color: var(--ink-muted); margin-bottom: 1.5rem;
 }
 .contact-email-link {
-  display: block; font-family: var(--font-serif); font-size: clamp(1.3rem,2.5vw,2rem);
-  font-weight: 300; font-style: italic; color: var(--ink);
+  display: block; font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+  font-weight: 500; letter-spacing: 0.01em; color: var(--ink);
   margin-bottom: 2.5rem; position: relative; transition: color 0.3s;
 }
 .contact-email-link:hover { color: var(--coral); }
@@ -721,11 +729,11 @@ button { font-family: var(--font-sans); }
   color: var(--coral); margin-bottom: 0.75rem;
 }
 .page-hero-title {
-  font-family: var(--font-serif); font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 300; color: var(--ink); line-height: 1.05;
+  font-family: var(--font-heading); font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 500; color: var(--ink); line-height: 1.05;
   margin-bottom: 1rem; letter-spacing: -0.01em;
 }
-.page-hero-title em { font-style: italic; }
+.page-hero-title em { font-style: italic; font-weight: 300; }
 .page-hero-sub {
   font-size: 1rem; color: var(--ink-muted); max-width: 480px; line-height: 1.8;
 }
