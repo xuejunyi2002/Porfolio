@@ -49,6 +49,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading); line-height: 1.15; font-weight: 600;
   font-style: normal;
 }
+em { font-style: normal; }
 p { color: var(--ink-muted); }
 p:last-child { margin-bottom: 0; }
 a { color: inherit; text-decoration: none; }
@@ -94,7 +95,7 @@ button { font-family: var(--font-body); }
 
 .logo {
   display: flex; align-items: center; gap: 0.55rem;
-  font-family: var(--font-serif); font-size: 1.1rem; font-style: italic;
+  font-family: var(--font-serif); font-size: 1.1rem;
   color: var(--ink); transition: opacity 0.2s;
 }
 .logo:hover { opacity: 0.65; }
@@ -332,7 +333,7 @@ button { font-family: var(--font-body); }
 }
 .hs-photo-tag {
   position: absolute; bottom: 1.5rem; left: 1.5rem;
-  font-family: var(--font-serif); font-size: 0.9rem; font-style: italic;
+  font-family: var(--font-serif); font-size: 0.9rem;
   color: var(--ink-muted); pointer-events: none;
 }
 
@@ -733,7 +734,7 @@ button { font-family: var(--font-body); }
   font-weight: 500; color: var(--ink); line-height: 1.05;
   margin-bottom: 1rem; letter-spacing: -0.01em;
 }
-.page-hero-title em { font-style: italic; font-weight: 300; }
+.page-hero-title em { font-weight: 300; color: var(--coral); }
 .page-hero-sub {
   font-size: 1rem; color: var(--ink-muted); max-width: 480px; line-height: 1.8;
 }
@@ -868,7 +869,7 @@ button { font-family: var(--font-body); }
   margin-bottom: 1.25rem;
   max-width: 720px;
 }
-.proj-hero-title em { font-style: italic; font-weight: 400; color: var(--coral); }
+.proj-hero-title em { font-weight: 400; color: var(--coral); }
 
 .proj-hero-sub {
   font-size: 1rem;
@@ -1154,7 +1155,6 @@ button { font-family: var(--font-body); }
   font-weight: 300;
   color: var(--ink-muted);
   line-height: 1.7;
-  font-style: italic;
   padding-left: 12px;
   border-left: 2px solid var(--border);
 }
@@ -1208,7 +1208,6 @@ button { font-family: var(--font-body); }
   font-family: var(--font-serif);
   font-size: 1rem;
   font-weight: 400;
-  font-style: italic;
   color: var(--ink-faint);
   margin-bottom: 5px;
   display: block;
@@ -1392,7 +1391,7 @@ button { font-family: var(--font-body); }
   line-height: 1.15;
   margin-bottom: 1rem;
 }
-.dr-role-title em { font-style: italic; color: var(--coral); font-weight: 400; }
+.dr-role-title em { color: var(--coral); font-weight: 400; }
 .dr-desc { font-size: 0.875rem; font-weight: 300; color: var(--ink-muted); line-height: 1.8; }
 
 /* --- Responsibilities grid (KT) --- */
@@ -1541,7 +1540,6 @@ button { font-family: var(--font-body); }
   font-weight: 600;
   color: #fff;
   line-height: 1.2;
-  font-style: italic;
 }
 .ob-right {
   display: grid;
