@@ -20,9 +20,9 @@
   --border-2:    #c8c8c6;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-sans:    'Inter', system-ui, sans-serif;
-  --font-heading: 'Inter', system-ui, sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
-  --font-accent:  'Inter', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-accent:  'Plus Jakarta Sans', system-ui, sans-serif;
   --max-w:       1100px;
   --nav-h:       66px;
   --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -34,7 +34,7 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
   line-height: 1.7;
