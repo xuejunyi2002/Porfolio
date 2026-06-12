@@ -96,7 +96,7 @@ button { font-family: var(--font-body); }
 
 .logo {
   display: flex; align-items: center; gap: 0.55rem;
-  font-family: var(--font-sans); font-size: 1rem; font-weight: 600;
+  font-family: var(--font-heading); font-size: 1rem; font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--ink); transition: opacity 0.2s;
 }
@@ -280,10 +280,10 @@ button { font-family: var(--font-body); }
   At 1920px monitor: capped at 22rem — consistent on large displays.
 */
 .hs-big-name {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(6.5rem, 20vw, 22rem);
-  font-weight: 600; line-height: 1;
-  letter-spacing: -0.03em; white-space: nowrap;
+  font-weight: 800; line-height: 1;
+  letter-spacing: -0.04em; white-space: nowrap;
   color: var(--ink); margin: 0;
 }
 .hs-im { will-change: opacity; }
@@ -300,7 +300,7 @@ button { font-family: var(--font-body); }
 }
 .hs-desc-wrap { position: relative; }
 .hs-desc {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: clamp(1rem, 2.1vw, 1.6rem);
   font-weight: 300; line-height: 1.5;
   color: var(--ink); margin: 0; will-change: opacity;
@@ -333,7 +333,7 @@ button { font-family: var(--font-body); }
 }
 .hs-photo-tag {
   position: absolute; bottom: 1.5rem; left: 1.5rem;
-  font-family: var(--font-serif); font-size: 0.9rem;
+  font-family: var(--font-body); font-size: 0.88rem;
   color: var(--ink-muted); pointer-events: none;
 }
 
@@ -371,7 +371,7 @@ button { font-family: var(--font-body); }
 }
 .tab-btn {
   background: none; border: none; cursor: pointer; padding: 0.85rem 1.75rem;
-  font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500;
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
   letter-spacing: 0.06em; color: var(--ink-muted);
   position: relative; transition: color 0.25s;
 }
@@ -561,7 +561,7 @@ button { font-family: var(--font-body); }
 }
 .testimonial-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
 .quote-mark {
-  font-family: var(--font-serif); font-size: 3.5rem; font-weight: 700;
+  font-family: var(--font-heading); font-size: 3.5rem; font-weight: 700;
   color: var(--border); line-height: 0.8; margin-bottom: 1rem; display: block;
 }
 .quote-text {
@@ -632,7 +632,7 @@ button { font-family: var(--font-body); }
   box-shadow: 0 2px 14px rgba(0,0,0,0.05);
 }
 .why-num {
-  font-family: var(--font-serif); font-size: 3rem; font-weight: 700;
+  font-family: var(--font-heading); font-size: 3rem; font-weight: 700;
   color: var(--border); line-height: 1; margin-bottom: 1rem;
 }
 .why-title {
@@ -805,7 +805,7 @@ button { font-family: var(--font-body); }
 }
 .field input, .field textarea {
   background: transparent; border: none; border-bottom: 1px solid var(--border);
-  padding: 0.6rem 0; font-family: var(--font-sans); font-size: 0.9rem;
+  padding: 0.6rem 0; font-family: var(--font-body); font-size: 0.9rem;
   color: var(--ink); outline: none; transition: border-color 0.3s; resize: none;
 }
 .field input:focus, .field textarea:focus { border-bottom-color: var(--ink); }
@@ -1313,7 +1313,7 @@ button { font-family: var(--font-body); }
 }
 .ch-cell:last-child { border-right: none; }
 .ch-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 400;
   color: var(--ink-faint);
@@ -1613,7 +1613,7 @@ button { font-family: var(--font-body); }
 }
 .refl-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.05); transform: translateY(-3px); }
 .refl-big-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--border);
