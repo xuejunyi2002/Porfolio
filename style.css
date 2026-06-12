@@ -113,7 +113,7 @@ button { font-family: var(--font-body); }
   transition: color 0.25s;
 }
 .nav-link:hover { color: var(--ink); }
-.nav-link.active { color: var(--ink); font-weight: 500; }
+.nav-link.active { color: var(--ink); }
 .nav-link--cta { color: var(--ink); }
 .nav-link--cta:hover { opacity: 0.6; }
 
