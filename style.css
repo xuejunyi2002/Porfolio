@@ -426,7 +426,103 @@ button { font-family: var(--font-body); }
 .tool-pill:hover { border-color: var(--coral); color: var(--coral); }
 
 /* ============================================================
-   HOME — FEATURED PROJECTS
+   HOME — RECENT WORK (editorial full-width grid)
+   ============================================================ */
+.rw-section {
+  padding: 8rem 0 0;
+  border-bottom: 1px solid var(--border);
+}
+.rw-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.rw-heading {
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+.rw-see-all {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  transition: color 0.2s;
+}
+.rw-see-all:hover { color: var(--ink); }
+
+.rw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+}
+.rw-card {
+  display: block;
+  overflow: hidden;
+  background: var(--surface);
+  transition: opacity 0.35s;
+}
+.rw-grid:hover .rw-card        { opacity: 0.45; }
+.rw-grid:hover .rw-card:hover  { opacity: 1; }
+.rw-card-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.6rem;
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+  background: var(--surface);
+}
+.rw-card-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rw-card-meta {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+.rw-pill {
+  font-size: 0.66rem;
+  font-weight: 600;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 100px;
+  padding: 3px 11px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.rw-card-img {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  transition: transform 0.65s var(--ease);
+}
+.rw-card:hover .rw-card-img { transform: scale(1.04); }
+.rw-img-1 { background: linear-gradient(145deg, #c4a898, #a8877a, #8c6860); }
+.rw-img-2 { background: linear-gradient(145deg, #98aec4, #7a90a8, #617d96); }
+.rw-img-3 { background: linear-gradient(145deg, #a8c498, #8aaa7c, #6e9060); }
+
+@media (max-width: 960px) {
+  .rw-grid { grid-template-columns: 1fr; gap: 0; background: none; }
+  .rw-card { border-bottom: 1px solid var(--border); }
+  .rw-card:last-child { border-bottom: none; }
+  .rw-card-img { aspect-ratio: 16 / 9; }
+  .rw-grid:hover .rw-card { opacity: 1; }
+}
+@media (max-width: 640px) {
+  .rw-section { padding: 5.5rem 0 0; }
+  .rw-card-bar { padding: 0.8rem 1.25rem; }
+}
+
+/* ============================================================
+   HOME — FEATURED PROJECTS (legacy — kept for fallback)
    ============================================================ */
 .featured-grid {
   display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem;
