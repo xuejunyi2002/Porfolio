@@ -1100,6 +1100,36 @@ button { font-family: var(--font-body); }
   line-height: 1.4;
 }
 
+/* --- Photo sections --- */
+.proj-photos {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.proj-photo-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+.proj-photo-grid--2 { grid-template-columns: 1fr 1fr; }
+.proj-photo-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+.proj-photo-wrap {
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-2);
+}
+.proj-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.proj-photo-caption {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.85rem;
+}
+
 /* --- Role grid --- */
 .role-intro {
   font-size: 0.97rem;
