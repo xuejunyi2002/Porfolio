@@ -1115,7 +1115,7 @@ button { font-family: var(--font-body); }
   overflow: hidden;
   border-radius: 8px;
   background: var(--bg-2);
-  max-height: 220px;
+  max-height: 300px;
 }
 .proj-photo-wrap img {
   width: 100%;
