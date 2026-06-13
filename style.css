@@ -1418,8 +1418,8 @@ button { font-family: var(--font-body); }
 }
 .ch-problem {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--ink);
+  font-weight: 400;
+  color: var(--ink-muted);
   line-height: 1.45;
   margin-bottom: 5px;
 }
@@ -1961,8 +1961,4 @@ button { font-family: var(--font-body); }
   line-height: 1.3;
   letter-spacing: -0.01em;
   margin-bottom: 0.65rem;
-}
-.ch-table--v2 .ch-problem {
-  color: var(--ink-muted);
-  font-weight: 400;
 }
