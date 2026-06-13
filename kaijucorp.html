@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaiju Corp. — Ella Xue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-follower" aria-hidden="true"></div>
+
+<!-- ============================================================ HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M8 38 C10 20, 24 8, 38 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14 28 C18 24, 28 22, 34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="38" cy="12" r="3" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+      </svg>
+      ella xue
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html"     class="nav-link">Home</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="about.html"    class="nav-link">About Me</a>
+      <a href="contact.html"  class="nav-link nav-link--cta">Contact ↗</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="header-rule"></div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav>
+    <a href="index.html"     class="mobile-nav-link">Home</a>
+    <a href="projects.html" class="mobile-nav-link">Projects</a>
+    <a href="about.html"    class="mobile-nav-link">About Me</a>
+    <a href="contact.html"  class="mobile-nav-link">Contact</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ============================================================ COVER -->
+  <div class="proj-cover">
+    <img class="proj-cover-img" src="assets/images/kajiucorp/cover.JPG" alt="Kaiju Corp. cover" aria-hidden="true">
+    <h1 class="proj-cover-title">Kaiju Corp.</h1>
+  </div>
+
+  <!-- ============================================================ HERO META -->
+  <div class="proj-hero-below">
+
+    <div class="proj-breadcrumb reveal">
+      <a href="projects.html" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3L5 8l5 5"/>
+        </svg>
+        All Projects
+      </a>
+    </div>
+
+    <p class="proj-hero-sub reveal">
+      An asymmetric VR + PC game exploring gaze and gesture interaction — self-directed by VGS Studio, currently in active production with a target delivery of August 2026.
+    </p>
+
+    <div class="snapshot-row reveal reveal-d2">
+      <div class="snap-cell">
+        <span class="snap-key">Studio</span>
+        <span class="snap-val">VGS Studio</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Status</span>
+        <span class="snap-val">Work in Progress</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Target Delivery</span>
+        <span class="snap-val">August 2026</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Project Type</span>
+        <span class="snap-val">Self-Directed Venture Game Project</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">My Role</span>
+        <span class="snap-val">Project Manager · Producer</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Core Team</span>
+        <span class="snap-val">4 Members</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Additional Support</span>
+        <span class="snap-val">External Art Collaborators</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Experience</span>
+        <span class="snap-val">Asymmetric VR + PC Multiplayer</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Platform</span>
+        <span class="snap-val">Meta Quest 3 · PC</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Engine</span>
+        <span class="snap-val">Unity</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Production Length</span>
+        <span class="snap-val">13 Weeks</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Tools</span>
+        <span class="snap-val">Jira · Miro · Google Sheets · Figma · GitHub · Discord</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================ PROTOTYPE REEL -->
+  <div class="proj-trailer-wrap reveal">
+    <div class="proj-trailer proj-trailer-placeholder">
+      Current Prototype Reel Coming Soon
+    </div>
+  </div>
+
+  <div class="proj-wrap">
+
+    <!-- ============================================================ INTRO -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">About the Project</span>
+      <h2 class="section-heading reveal reveal-d1">Project Introduction</h2>
+      <div class="role-intro reveal reveal-d2">
+        <p style="margin-bottom: 1.2rem;">Kaiju Corp. is a self-directed asymmetric multiplayer game currently being developed by VGS Studio. The project explores how gaze, hand gestures, and responsive feedback can create more natural and intentional interaction in VR.</p>
+        <p style="margin-bottom: 1.2rem;">The game connects a VR player and PC players within the same experience. The VR player takes on the role of a kaiju with embodied attack and interaction abilities, while PC players move through the environment, fight back, and work toward their own objectives.</p>
+        <p style="margin-bottom: 1.2rem;">Rather than relying heavily on menus or traditional pointer-based controls, the project investigates how gaze and gesture can help the VR player select targets and perform actions more naturally.</p>
+        <p style="margin-bottom: 1.2rem;">Unlike a client-based production, Kaiju Corp. is developed and directed entirely by our venture team. This means we are responsible for defining the vision, validating the concept, managing the scope, creating the production plan, and making creative and product decisions throughout development.</p>
+        <p>As Project Manager and Producer, I lead the production process across iterative planning, scope management, team coordination, playtesting, retrospectives, and external art collaboration. The project is currently in active production and is scheduled for delivery in August 2026.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ ROLE -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Skills Demonstrated</span>
+      <h2 class="section-heading reveal reveal-d1">Role &amp; Responsibilities</h2>
+      <p class="role-intro reveal reveal-d2">
+        As Project Manager and Producer, I help the team turn an experimental interaction concept into a structured, testable, and achievable game production. Because Kaiju Corp. is a self-directed venture project, our team is responsible for both the creative direction and the production strategy. My role is to help the team establish a shared vision, evaluate priorities, manage uncertainty, and keep the project moving toward a realistic August delivery.
+      </p>
+      <div class="role-grid">
+        <div class="role-card reveal reveal-d1">
+          <span class="role-idx">01</span>
+          <p class="role-name">Production Planning</p>
+          <p class="role-desc">Developed the project charter, scope priorities, milestones, and production roadmap. Translated the creative vision into a structured and testable plan. Organized the 13-week timeline into two-week cycles and maintained the Jira backlog and Kanban workflow.</p>
+        </div>
+        <div class="role-card reveal reveal-d2">
+          <span class="role-idx">02</span>
+          <p class="role-name">Scope &amp; Iteration Management</p>
+          <p class="role-desc">Defined the core game loop and balanced the needs of an experimental interaction system with a playable game. Adjusted priorities as prototypes, technical findings, and playtest results changed the team's understanding. Used retrospectives to protect playable scope while preserving room for meaningful experimentation.</p>
+        </div>
+        <div class="role-card reveal reveal-d3">
+          <span class="role-idx">03</span>
+          <p class="role-name">Team Coordination</p>
+          <p class="role-desc">Facilitated stand-ups, sprint planning, milestone reviews, and retrospectives. Maintained visibility across design, development, art, testing, and documentation. Helped the team reach shared decisions without relying on direction from an external client.</p>
+        </div>
+        <div class="role-card reveal reveal-d1">
+          <span class="role-idx">04</span>
+          <p class="role-name">External Art Collaboration</p>
+          <p class="role-desc">Coordinated external art collaborators supporting 3D asset production. Matched assignments to contributors' availability and strengths. Tracked asset creation, review, revision, approval, and Unity integration separately from core team development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PRODUCTION JOURNEY -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Timeline</span>
+      <h2 class="section-heading reveal reveal-d1">Production Journey</h2>
+      <div class="sprint-pills reveal reveal-d2">
+        <div class="sprint-pill"><strong>13</strong> Weeks Total</div>
+        <div class="sprint-pill"><strong>5</strong> Production Stages</div>
+        <div class="sprint-pill"><strong>4</strong> Core Team Members</div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line">
+          <div class="timeline-progress" id="tlProgress"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 01</span>
+            <p class="tl-sprint-name">Define the Core Interaction</p>
+            <p class="tl-dates">Project kickoff</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Gaze + gesture as core focus</span>
+              <span class="chip">Measurable goals defined</span>
+              <span class="chip">Voice interaction scoped out</span>
+              <span class="chip">Project charter established</span>
+            </div>
+            <p class="tl-pm-note">Clarified project direction, defined measurable goals, and established gaze and gesture as the core interaction focus while keeping voice interaction outside the main scope.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 02</span>
+            <p class="tl-sprint-name">Build the Multiplayer Foundation</p>
+            <p class="tl-dates">Early development</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Room hosting + joining built</span>
+              <span class="chip">VR + PC synchronization</span>
+              <span class="chip">Player movement + health systems</span>
+            </div>
+            <p class="tl-pm-note">Organized features into sprint goals, tracked dependencies between networking and gameplay systems, and protected time for integration rather than only isolated feature development.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 03</span>
+            <p class="tl-sprint-name">Test and Refine the Interaction</p>
+            <p class="tl-dates">Prototype testing</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Intuitive gesture testing</span>
+              <span class="chip">Shooting prototype validated</span>
+              <span class="chip">Recognition accuracy assessed</span>
+              <span class="chip">Feedback clarity improved</span>
+            </div>
+            <p class="tl-pm-note">Structured the test process, defined observation criteria, assigned team responsibilities, synthesized findings, and translated meaningful patterns into production priorities.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 04</span>
+            <p class="tl-sprint-name">Reassess and Replan</p>
+            <p class="tl-dates">Iterative review</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Retrospectives embedded in production</span>
+              <span class="chip">Backlog + milestones reviewed</span>
+              <span class="chip">Roadmap updated to reflect reality</span>
+            </div>
+            <p class="tl-pm-note">Kept the backlog, milestones, and priorities responsive to evidence while ensuring the team remained aligned with the August delivery target.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 05</span>
+            <p class="tl-sprint-name">Integrate the Full Experience</p>
+            <p class="tl-dates">Integration + delivery</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip">Art integration + Unity pipeline</span>
+              <span class="chip key">Onboarding + win/loss conditions</span>
+              <span class="chip">External playtest preparation</span>
+            </div>
+            <p class="tl-pm-note">Coordinating feature readiness and art integration, separating asset creation from Unity implementation, and prioritizing work required for external playtesting and final delivery.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ CHALLENGES -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Key Challenges</span>
+      <h2 class="section-heading reveal reveal-d1">Problem → Response → Current Outcome</h2>
+      <p class="challenge-intro reveal reveal-d2">Kaiju Corp. is both an experimental interaction project and a self-directed multiplayer game production. Without an external client setting requirements, the team must continuously evaluate its own vision, scope, priorities, and evidence. As Project Manager and Producer, my focus is to give iteration enough flexibility to support discovery while maintaining the structure required to deliver a cohesive game in August.</p>
+
+      <div class="ch-table reveal">
+        <div class="ch-head">
+          <div class="ch-head-cell">Challenge</div>
+          <div class="ch-head-cell">My Response</div>
+          <div class="ch-head-cell">Current Outcome</div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num">01 — Managing Iterative Production</span>
+            <p class="ch-problem">The project changes quickly as prototypes, technical discoveries, team discussions, and player feedback reveal new information. A fixed long-term plan can quickly stop reflecting the reality of the production.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I organize development through two-week cycles, a prioritized backlog, milestone reviews, and regular retrospectives. New findings and ideas are evaluated through player value, production effort, dependencies, technical risk, and alignment with the core experience before they become committed tasks.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">The team can adapt without losing its production direction. Iteration is managed through a visible decision-making process rather than continuous and uncontrolled change.</p>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num">02 — Protecting Scope in a Self-Directed Project</span>
+            <p class="ch-problem">Because the team owns the creative direction, there are many possible ideas we could explore. We are also developing both an experimental interaction system and a complete VR + PC game within the capacity of a four-person core team.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I help the team maintain a clear distinction between the core playable loop, interaction requirements, and exploratory ideas. The roadmap and backlog are regularly reviewed so that new ideas do not automatically become production commitments.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">The project can retain its experimental and creative value while continuing to move toward a cohesive, playable, and deliverable game experience.</p>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num">03 — Coordinating External Art Collaborators</span>
+            <p class="ch-problem">External art collaborators work outside the core team and have different schedules, availability, and production capacity. Assignments that are too large, unclear, or dependent on unfinished work could create delays and integration bottlenecks.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I divide the art scope into prioritized, self-contained assignments and match them to each contributor's strengths and availability. I provide clear references, expectations, ownership, and review points, while tracking asset creation separately from Unity integration.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">External collaborators can contribute through realistic commitments, while the core team maintains visibility over asset progress, review status, and integration readiness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ REFLECTION -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Leadership Principles</span>
+      <h2 class="section-heading reveal reveal-d1">What I Carry Forward</h2>
+      <div class="reflection-grid">
+        <div class="refl-card reveal reveal-d1">
+          <p class="refl-big-num">01</p>
+          <p class="refl-title">Iteration Needs Structure</p>
+          <p class="refl-body">An iterative project still requires a stable decision-making framework. Short production cycles, retrospectives, milestones, and success criteria allow the plan to evolve while keeping the team aligned around the intended experience and delivery target.</p>
+        </div>
+        <div class="refl-card reveal reveal-d2">
+          <p class="refl-big-num">02</p>
+          <p class="refl-title">Scope Is an Ongoing Decision</p>
+          <p class="refl-body">Scope is not defined once and left unchanged. In an experimental game project, it must be continuously evaluated against evidence, team capacity, dependencies, and production risk. My role is to preserve the value of exploration while protecting the team's ability to deliver.</p>
+        </div>
+        <div class="refl-card reveal reveal-d3">
+          <p class="refl-big-num">03</p>
+          <p class="refl-title">Flexible Collaboration Requires Clear Boundaries</p>
+          <p class="refl-body">External contributors do not need to follow the core team's exact workflow, but they need clear priorities, ownership, references, review points, and handoff expectations. Flexible collaboration works best when the boundaries around each contribution are explicit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CURRENT STATUS -->
+    <section class="proj-section proj-section--status">
+      <span class="eyebrow reveal">Where We Are Now</span>
+      <h2 class="section-heading reveal reveal-d1">Currently in Active Production</h2>
+      <p class="role-intro reveal reveal-d2">
+        The team has established the multiplayer foundation and is refining the core gaze and gesture interaction system. Upcoming work focuses on strengthening the playable loop, preparing for external testing, integrating priority art assets, and improving the overall clarity and cohesion of the experience.
+      </p>
+      <div class="sprint-pills reveal reveal-d3">
+        <div class="sprint-pill"><strong>Target Delivery:</strong> August 2026</div>
+        <div class="sprint-pill"><strong>Status:</strong> Work in Progress</div>
+      </div>
+    </section>
+
+  </div><!-- /proj-wrap -->
+
+</main>
+
+<div class="proj-end">
+  <div class="proj-end-inner">
+    <span class="proj-end-label">Get in touch</span>
+    <nav class="proj-end-nav">
+      <div class="proj-end-nav-col">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="proj-end-nav-col">
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </nav>
+  </div>
+  <div class="proj-end-body">
+    <h2 class="proj-end-heading">Let's start<br>creating together.</h2>
+    <a href="contact.html" class="proj-end-btn">Let's talk ↗</a>
+  </div>
+  <div class="proj-end-foot">
+    <span>© 2026 Ella Xue</span>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
