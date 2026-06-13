@@ -395,6 +395,14 @@ button { font-family: var(--font-body); }
 }
 .tab-text p { font-size: 0.94rem; line-height: 1.82; margin-bottom: 1.25rem; }
 
+.tab-closing {
+  grid-column: 1 / -1;
+  font-size: 0.94rem; font-style: italic;
+  color: var(--ink-muted); line-height: 1.7;
+  padding-top: 0.5rem; border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
 .trait-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
 .trait-list li {
   display: flex; align-items: flex-start; gap: 0.75rem;
