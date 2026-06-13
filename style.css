@@ -450,7 +450,7 @@ button { font-family: var(--font-body); }
 }
 .rw-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
@@ -511,7 +511,10 @@ button { font-family: var(--font-body); }
 }
 .rw-cta { text-align: center; }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .rw-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+}
+@media (max-width: 560px) {
   .rw-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 640px) {

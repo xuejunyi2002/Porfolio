@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biochem 101 — Ella Xue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-follower" aria-hidden="true"></div>
+
+<!-- ============================================================ HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M8 38 C10 20, 24 8, 38 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14 28 C18 24, 28 22, 34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="38" cy="12" r="3" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+      </svg>
+      ella xue
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html"     class="nav-link">Home</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="about.html"    class="nav-link">About Me</a>
+      <a href="contact.html"  class="nav-link nav-link--cta">Contact ↗</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="header-rule"></div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav>
+    <a href="index.html"     class="mobile-nav-link">Home</a>
+    <a href="projects.html" class="mobile-nav-link">Projects</a>
+    <a href="about.html"    class="mobile-nav-link">About Me</a>
+    <a href="contact.html"  class="mobile-nav-link">Contact</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ============================================================ COVER -->
+  <div class="proj-cover">
+    <img class="proj-cover-img" src="assets/images/biochem-101/coVER.png" alt="Biochem 101 cover" aria-hidden="true">
+    <h1 class="proj-cover-title">Biochem 101</h1>
+  </div>
+
+  <!-- ============================================================ HERO META -->
+  <div class="proj-hero-below">
+
+    <div class="proj-breadcrumb reveal">
+      <a href="projects.html" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3L5 8l5 5"/>
+        </svg>
+        All Projects
+      </a>
+    </div>
+
+    <p class="proj-hero-sub reveal">
+      A two player cooperative action game built around chemistry and teamwork, developed by Team Fennec over four months.
+    </p>
+
+    <div class="snapshot-row reveal reveal-d2">
+      <div class="snap-cell">
+        <span class="snap-key">Team</span>
+        <span class="snap-val">Team Fennec</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Status</span>
+        <span class="snap-val">Completed</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">My Role</span>
+        <span class="snap-val">Project Manager</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Project Type</span>
+        <span class="snap-val">Student Game Project</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-key">Project Time</span>
+        <span class="snap-val">4 Months</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================ TRAILER -->
+  <div class="proj-trailer-wrap reveal">
+    <div class="proj-trailer">
+      <iframe
+        src="https://www.youtube.com/embed/crkvFejY2Rw?autoplay=1&mute=1"
+        title="Biochem 101 — Gameplay Trailer"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="proj-wrap">
+
+    <!-- ============================================================ INTRO -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">About the Project</span>
+      <h2 class="section-heading reveal reveal-d1">Project Introduction</h2>
+      <div class="role-intro reveal reveal-d2">
+        <p style="margin-bottom: 1.2rem;">Biochem 101 is a two player cooperative action game developed by Team Fennec over four months. Players take on the roles of a reckless Mad Scientist and a disciplined Government Agent as they fight through a laboratory where every experiment has turned hostile.</p>
+        <p style="margin-bottom: 1.5rem;">The game combines action combat with chemistry based reactions, improvised weapons, and cooperative lab minigames. As the team's sole Project Manager, I managed planning, scope, team coordination, playtest driven iteration, and delivery across a multidisciplinary student team.</p>
+      </div>
+      <div class="reveal reveal-d3">
+        <a href="https://mauveella.itch.io/biochem-101" class="btn btn-outline" target="_blank" rel="noopener">Play Biochem 101 on itch.io ↗</a>
+      </div>
+    </section>
+
+    <!-- game setting photo -->
+    <div class="proj-photos reveal">
+      <div class="proj-photo-wrap" style="aspect-ratio: 16/9;">
+        <img src="assets/images/biochem-101/GAME%20SETTING.png" alt="Biochem 101 game setting">
+      </div>
+      <p class="proj-photo-caption">Mad Scientist and Government Agent in the laboratory</p>
+    </div>
+
+    <!-- ============================================================ ROLE -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Skills Demonstrated</span>
+      <h2 class="section-heading reveal reveal-d1">Role &amp; Responsibilities</h2>
+      <p class="role-intro reveal reveal-d2">
+        As the team's sole Project Manager, I kept production moving across a six person team of artists, developers, and designers. My focus was to translate creative ideas into achievable work, maintain visibility across disciplines, and keep scope connected to what the team could realistically deliver within four months.
+      </p>
+      <div class="role-grid">
+        <div class="role-card reveal reveal-d1">
+          <span class="role-idx">01</span>
+          <p class="role-name">Production and Scope Management</p>
+          <p class="role-desc">Built and maintained the production plan, roadmap, milestones, and ClickUp backlog. Broke the game into features, tasks, dependencies, and achievable sprint goals. Adjusted scope throughout production to reflect team capacity, course workload, and the remaining timeline. Helped the team prioritize the core cooperative experience over lower impact additions.</p>
+        </div>
+        <div class="role-card reveal reveal-d2">
+          <span class="role-idx">02</span>
+          <p class="role-name">Team and Cross Discipline Coordination</p>
+          <p class="role-desc">Facilitated planning sessions, stand-ups, progress reviews, and team discussions. Coordinated work across art, development, design, and integration. Tracked ownership, blockers, dependencies, and next actions. Helped resolve differences in priorities by keeping decisions connected to shared project goals.</p>
+        </div>
+        <div class="role-card reveal reveal-d3">
+          <span class="role-idx">03</span>
+          <p class="role-name">Testing and Iteration</p>
+          <p class="role-desc">Planned playtests and helped identify what the team needed to observe and validate. Organized findings into clear themes instead of treating every comment as a new task. Translated useful feedback into updated priorities and production tasks. Balanced iteration needs against time, effort, and production risk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- team photo -->
+    <div class="proj-photos reveal">
+      <div class="proj-photo-wrap" style="aspect-ratio: 16/9;">
+        <img src="assets/images/biochem-101/TEAN.png" alt="Team Fennec">
+      </div>
+      <p class="proj-photo-caption">Team Fennec</p>
+    </div>
+
+    <!-- ============================================================ PRODUCTION JOURNEY -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Timeline</span>
+      <h2 class="section-heading reveal reveal-d1">Production Journey</h2>
+      <div class="sprint-pills reveal reveal-d2">
+        <div class="sprint-pill"><strong>4</strong> Months Total</div>
+        <div class="sprint-pill"><strong>5</strong> Production Stages</div>
+        <div class="sprint-pill"><strong>6</strong> Team Members</div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line">
+          <div class="timeline-progress" id="tlProgress"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 01</span>
+            <p class="tl-sprint-name">Define the Cooperative Experience</p>
+            <p class="tl-dates">Project kickoff</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Core cooperative loop defined</span>
+              <span class="chip">Character roles clarified</span>
+              <span class="chip">Production plan started</span>
+              <span class="chip">Project direction established</span>
+            </div>
+            <p class="tl-pm-note">Helped the team define the core cooperative loop, clarify the project direction, and turn the early concept into a manageable production plan.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 02</span>
+            <p class="tl-sprint-name">Break the Game into Achievable Work</p>
+            <p class="tl-dates">Production setup</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">ClickUp structure built</span>
+              <span class="chip">Priorities organized</span>
+              <span class="chip">Dependencies identified</span>
+              <span class="chip">Features broken into tasks</span>
+            </div>
+            <p class="tl-pm-note">Built the ClickUp structure, organized priorities, identified dependencies, and translated major features into achievable tasks alongside other academic responsibilities.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 03</span>
+            <p class="tl-sprint-name">Manage Production Across Disciplines</p>
+            <p class="tl-dates">Active development</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Cross-discipline visibility maintained</span>
+              <span class="chip">Blockers tracked and resolved</span>
+              <span class="chip">Ownership clarified per feature</span>
+            </div>
+            <p class="tl-pm-note">Maintained visibility across disciplines, tracked blockers, clarified ownership, and kept team communication connected to the production plan as art, design, and development tasks became increasingly dependent on one another.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 04</span>
+            <p class="tl-sprint-name">Test and Adjust the Experience</p>
+            <p class="tl-dates">Playtesting and iteration</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip key">Playtests organized</span>
+              <span class="chip">Feedback organized into themes</span>
+              <span class="chip">Priorities updated</span>
+              <span class="chip">Scope adjusted to findings</span>
+            </div>
+            <p class="tl-pm-note">Organized feedback into production priorities and helped the team decide which changes would create the most value within the available time, connecting playtest results directly to updated sprint goals.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-sprint-label">Stage 05</span>
+            <p class="tl-sprint-name">Refine and Complete the Game</p>
+            <p class="tl-dates">Final delivery</p>
+          </div>
+          <div class="tl-right">
+            <div class="tl-chips">
+              <span class="chip">Final scope protected</span>
+              <span class="chip key">Cohesive final build delivered</span>
+              <span class="chip">Priority assets completed</span>
+            </div>
+            <p class="tl-pm-note">Protected the final scope, coordinated remaining dependencies, and maintained visibility over the work needed for completion. The goal was to strengthen the core cooperative experience rather than add every remaining idea.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- playtest photos -->
+    <div class="proj-photos reveal">
+      <div class="proj-photo-grid proj-photo-grid--2">
+        <div class="proj-photo-wrap" style="aspect-ratio: 4/3;">
+          <img src="assets/images/biochem-101/TEST.png" alt="Playtest session">
+        </div>
+        <div class="proj-photo-wrap" style="aspect-ratio: 4/3;">
+          <img src="assets/images/biochem-101/PLAYTEST.png" alt="Playtest session">
+        </div>
+      </div>
+      <p class="proj-photo-caption">Playtesting sessions</p>
+    </div>
+
+    <!-- ============================================================ CHALLENGES -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Key Challenges</span>
+      <h2 class="section-heading reveal reveal-d1">Problem → Response → Outcome</h2>
+      <p class="challenge-intro reveal reveal-d2">Biochem 101 required a small multidisciplinary team to build a complete cooperative game within four months while balancing other academic responsibilities. As the sole Project Manager, my focus was to keep the scope realistic, maintain alignment across disciplines, and guide iteration without losing sight of delivery.</p>
+
+      <div class="ch-table reveal">
+        <div class="ch-head">
+          <div class="ch-head-cell">Challenge</div>
+          <div class="ch-head-cell">My Response</div>
+          <div class="ch-head-cell">Outcome</div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num-label">01</span>
+            <p class="ch-title">Managing Scope and Workload</p>
+            <p class="ch-problem">The original concept included multiple characters, combat systems, chemistry reactions, cooperative minigames, enemies, environments, UI, and art assets. The team also had other courses and responsibilities, so production capacity changed throughout the four month timeline.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I regularly reviewed the backlog, remaining timeline, dependencies, and each discipline's workload. Features were prioritized based on their value to the core cooperative experience, while lower priority additions were simplified, delayed, or removed. I also adjusted sprint goals when the team's available capacity changed.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">The team maintained a playable and achievable scope throughout production. By focusing effort on the systems that supported cooperation and game clarity, we completed a cohesive final experience without depending on every original idea.</p>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num-label">02</span>
+            <p class="ch-title">Aligning Art, Design, and Development</p>
+            <p class="ch-problem">Artists, designers, and developers often approached the same feature from different perspectives. A visually strong idea was not always technically practical, while a functional system did not always provide the intended player experience.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I created clearer ownership, task definitions, references, and acceptance expectations before work began. During team discussions, I helped connect creative decisions to technical requirements, available time, and the intended player experience. Dependencies and blockers were tracked in ClickUp so that disciplines could plan around one another.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">The team developed a clearer shared understanding of feature requirements and production priorities. This reduced avoidable rework and improved coordination between asset creation, feature development, and integration.</p>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-cell">
+            <span class="ch-num-label">03</span>
+            <p class="ch-title">Turning Playtest Feedback into Production Decisions</p>
+            <p class="ch-problem">Playtests generated feedback across controls, combat, cooperation, visual clarity, and pacing. The team could not respond to every suggestion within the remaining timeline, and not every comment represented a high priority issue.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-body">I organized findings into recurring themes and evaluated them through player impact, frequency, effort, technical risk, and alignment with the core game loop. The most useful findings were translated into clear tasks, while lower impact ideas remained documented without automatically entering production.</p>
+          </div>
+          <div class="ch-cell">
+            <p class="ch-outcome">The team used playtesting as a focused decision making tool rather than an uncontrolled source of new work. Iteration became more targeted, helping us improve clarity and cooperation while protecting the final delivery timeline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ REFLECTION -->
+    <section class="proj-section">
+      <span class="eyebrow reveal">Leadership Principles</span>
+      <h2 class="section-heading reveal reveal-d1">What I Carry Forward</h2>
+      <div class="reflection-grid">
+        <div class="refl-card reveal reveal-d1">
+          <p class="refl-big-num">01</p>
+          <p class="refl-title">Scope Reflects Real Capacity</p>
+          <p class="refl-body">A production plan is only useful when it reflects the time and capacity the team actually has. I carry forward a capacity aware approach that connects scope decisions to workload, dependencies, and the value each feature adds to the core experience.</p>
+        </div>
+        <div class="refl-card reveal reveal-d2">
+          <p class="refl-big-num">02</p>
+          <p class="refl-title">Alignment Requires Shared Context</p>
+          <p class="refl-body">Cross discipline collaboration becomes stronger when everyone understands not only what they are building, but why it matters and what other work depends on it. Clear ownership, visible dependencies, and shared expectations help creative and technical teams make better decisions together.</p>
+        </div>
+        <div class="refl-card reveal reveal-d3">
+          <p class="refl-big-num">03</p>
+          <p class="refl-title">Feedback Must Support Decisions</p>
+          <p class="refl-body">Playtest feedback creates value when it is organized, evaluated, and connected to production priorities. I carry forward an evidence based approach that considers player impact, effort, risk, and project goals before turning feedback into committed work.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /proj-wrap -->
+
+</main>
+
+<div class="proj-end">
+  <div class="proj-end-inner">
+    <span class="proj-end-label">Get in touch</span>
+    <nav class="proj-end-nav">
+      <div class="proj-end-nav-col">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="proj-end-nav-col">
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </nav>
+  </div>
+  <div class="proj-end-body">
+    <h2 class="proj-end-heading">Let's start<br>creating together.</h2>
+    <a href="contact.html" class="proj-end-btn">Let's talk ↗</a>
+  </div>
+  <div class="proj-end-foot">
+    <span>© 2026 Ella Xue</span>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
