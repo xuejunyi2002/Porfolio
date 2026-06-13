@@ -1357,13 +1357,13 @@ button { font-family: var(--font-body); }
   border-right: 1px solid var(--border);
 }
 .ch-cell:last-child { border-right: none; }
-.ch-num {
+.ch-cell .ch-num {
   font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: var(--ink);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: block;
   text-transform: uppercase;
 }
