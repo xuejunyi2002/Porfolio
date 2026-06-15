@@ -64,21 +64,7 @@
 
       <div>
         <p class="contact-lead reveal">Have something in mind? Send me a message or reach out directly — I typically respond within a day.</p>
-        <button id="copyEmailBtn" class="contact-email-link reveal" type="button" aria-label="Copy email address">
-          <span class="email-copy-row">
-            <span id="copyEmailText">xuejunyi2002@gmail.com</span>
-            <svg id="copyIcon" class="copy-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="7" y="7" width="10" height="10" rx="1.5"/>
-              <path d="M13 7V5a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 5v6.5A1.5 1.5 0 0 0 5 13h2"/>
-            </svg>
-            <svg id="checkIcon" class="copy-icon copy-icon--check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
-              <path d="M4 10l5 5 7-8"/>
-            </svg>
-          </span>
-          <svg class="email-underline" viewBox="0 0 200 8" fill="none" aria-hidden="true">
-            <path d="M2 4 C40 2,80 6,120 4 C160 2,180 6,198 4" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </button>
+        <p class="contact-email-link reveal">xuejunyi2002@gmail.com</p>
         <div class="contact-socials reveal">
           <a href="https://www.linkedin.com/in/ella-xue-676157253/" target="_blank" rel="noopener" class="underline-link"><span>LinkedIn</span><span class="link-arrow">↗</span></a>
         </div>
@@ -148,25 +134,5 @@
 </div>
 
 <script src="main.js"></script>
-<script>
-const copyBtn   = document.getElementById('copyEmailBtn');
-const copyText  = document.getElementById('copyEmailText');
-const copyIcon  = document.getElementById('copyIcon');
-const checkIcon = document.getElementById('checkIcon');
-copyBtn.addEventListener('click', () => {
-  navigator.clipboard.writeText('xuejunyi2002@gmail.com').then(() => {
-    copyText.textContent = 'Copied!';
-    copyIcon.style.display  = 'none';
-    checkIcon.style.display = '';
-    copyBtn.style.opacity = '0.6';
-    setTimeout(() => {
-      copyText.textContent = 'xuejunyi2002@gmail.com';
-      copyIcon.style.display  = '';
-      checkIcon.style.display = 'none';
-      copyBtn.style.opacity = '';
-    }, 2000);
-  });
-});
-</script>
 </body>
 </html>
