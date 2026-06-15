@@ -64,12 +64,12 @@
 
       <div>
         <p class="contact-lead reveal">Have something in mind? Send me a message or reach out directly — I typically respond within a day.</p>
-        <a href="mailto:xuejunyi2002@gmail.com" class="contact-email-link reveal">
-          xuejunyi2002@gmail.com
+        <button id="copyEmailBtn" class="contact-email-link reveal" type="button" aria-label="Copy email address">
+          <span id="copyEmailText">xuejunyi2002@gmail.com</span>
           <svg class="email-underline" viewBox="0 0 200 8" fill="none" aria-hidden="true">
             <path d="M2 4 C40 2,80 6,120 4 C160 2,180 6,198 4" stroke="var(--coral)" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
-        </a>
+        </button>
         <div class="contact-socials reveal">
           <a href="https://www.linkedin.com/in/ella-xue-676157253/" target="_blank" rel="noopener" class="underline-link"><span>LinkedIn</span><span class="link-arrow">↗</span></a>
         </div>
@@ -139,5 +139,19 @@
 </div>
 
 <script src="main.js"></script>
+<script>
+const copyBtn  = document.getElementById('copyEmailBtn');
+const copyText = document.getElementById('copyEmailText');
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText('xuejunyi2002@gmail.com').then(() => {
+    copyText.textContent = 'Copied!';
+    copyBtn.style.opacity = '0.6';
+    setTimeout(() => {
+      copyText.textContent = 'xuejunyi2002@gmail.com';
+      copyBtn.style.opacity = '';
+    }, 2000);
+  });
+});
+</script>
 </body>
 </html>
