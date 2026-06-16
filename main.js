@@ -234,23 +234,22 @@ if (form) {
     btn.disabled = true;
 
     try {
-      const res  = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body:   new FormData(form)
+      const res  = await fetch('FORMSPREE_ENDPOINT', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    new FormData(form)
       });
       const data = await res.json();
-      console.log('Web3Forms response:', data);
 
-      if (data.success) {
+      if (res.ok) {
         btnText.textContent = 'Sent! Talk soon.';
         form.reset();
         setTimeout(() => { btnText.textContent = orig; btn.disabled = false; }, 3500);
       } else {
-        btnText.textContent = data.message || 'Something went wrong — try again.';
+        btnText.textContent = data.error || 'Something went wrong — try again.';
         btn.disabled = false;
       }
-    } catch (err) {
-      console.error('Web3Forms error:', err);
+    } catch {
       btnText.textContent = 'Something went wrong — try again.';
       btn.disabled = false;
     }
