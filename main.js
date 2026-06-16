@@ -239,16 +239,18 @@ if (form) {
         body:   new FormData(form)
       });
       const data = await res.json();
+      console.log('Web3Forms response:', data);
 
       if (data.success) {
         btnText.textContent = 'Sent! Talk soon.';
         form.reset();
         setTimeout(() => { btnText.textContent = orig; btn.disabled = false; }, 3500);
       } else {
-        btnText.textContent = 'Something went wrong — try again.';
+        btnText.textContent = data.message || 'Something went wrong — try again.';
         btn.disabled = false;
       }
-    } catch {
+    } catch (err) {
+      console.error('Web3Forms error:', err);
       btnText.textContent = 'Something went wrong — try again.';
       btn.disabled = false;
     }
