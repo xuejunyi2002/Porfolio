@@ -300,14 +300,15 @@ button { font-family: var(--font-body); }
   display: block; font-size: 1.1rem; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted);
 }
-.hs-desc-wrap { position: relative; }
+.hs-desc-wrap { display: grid; }
 .hs-desc {
+  grid-area: 1 / 1;
   font-family: var(--font-sans);
   font-size: clamp(1rem, 2.1vw, 1.6rem);
   font-weight: 300; line-height: 1.5;
   color: var(--ink); margin: 0; will-change: opacity;
 }
-.hs-desc--b { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+.hs-desc--b { opacity: 0; }
 .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /*
