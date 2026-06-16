@@ -234,7 +234,7 @@ if (form) {
     btn.disabled = true;
 
     try {
-      const res  = await fetch('FORMSPREE_ENDPOINT', {
+      const res  = await fetch('https://formspree.io/f/xnjyrynz', {
         method:  'POST',
         headers: { 'Accept': 'application/json' },
         body:    new FormData(form)
