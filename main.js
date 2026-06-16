@@ -221,22 +221,36 @@ tabBtns.forEach(btn => {
 })();
 
 /* ============================================================
-   CONTACT FORM
+   CONTACT FORM — Web3Forms
    ============================================================ */
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn     = form.querySelector('.form-submit');
     const btnText = btn.querySelector('span');
     const orig    = btnText.textContent;
     btnText.textContent = 'Sending…';
     btn.disabled = true;
-    // Replace with Formspree / EmailJS
-    setTimeout(() => {
-      btnText.textContent = 'Sent! Talk soon.';
-      form.reset();
-      setTimeout(() => { btnText.textContent = orig; btn.disabled = false; }, 3500);
-    }, 1000);
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body:   new FormData(form)
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        btnText.textContent = 'Sent! Talk soon.';
+        form.reset();
+        setTimeout(() => { btnText.textContent = orig; btn.disabled = false; }, 3500);
+      } else {
+        btnText.textContent = 'Something went wrong — try again.';
+        btn.disabled = false;
+      }
+    } catch {
+      btnText.textContent = 'Something went wrong — try again.';
+      btn.disabled = false;
+    }
   });
 }
