@@ -626,7 +626,8 @@ button { font-family: var(--font-body); }
 .about-avatar {
   position: relative; max-width: 340px;
 }
-.about-avatar .portrait-inner { aspect-ratio: 3/4; }
+.about-avatar .portrait-inner { aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; }
+.about-avatar .portrait-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 .about-lead {
   font-family: var(--font-heading); font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   font-weight: 600; line-height: 1.45; color: var(--ink); margin-bottom: 1.5rem;
