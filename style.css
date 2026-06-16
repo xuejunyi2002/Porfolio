@@ -300,14 +300,16 @@ button { font-family: var(--font-body); }
   display: block; font-size: 1.1rem; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted);
 }
-.hs-desc-wrap { display: grid; }
+.hs-desc-wrap { position: relative; }
 .hs-desc {
-  grid-area: 1 / 1;
   font-family: var(--font-sans);
   font-size: clamp(1rem, 2.1vw, 1.6rem);
   font-weight: 300; line-height: 1.5;
   color: var(--ink); margin: 0; will-change: opacity;
 }
+/* desc-b stays in flow and sets the container height (it's the longer text).
+   desc-a sits absolutely on top of it and fades out on scroll. */
+.hs-desc--a { position: absolute; top: 0; left: 0; right: 0; }
 .hs-desc--b { opacity: 0; }
 .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
