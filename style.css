@@ -1143,6 +1143,17 @@ button { font-family: var(--font-body); }
 }
 .proj-photo-grid--2 { grid-template-columns: 1fr 1fr; }
 .proj-photo-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Text left + image right split */
+.proj-text-img {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .proj-text-img { grid-template-columns: 1fr; gap: 1.5rem; }
+}
 .proj-photo-wrap {
   overflow: hidden;
   border-radius: 12px;
