@@ -454,16 +454,16 @@ button { font-family: var(--font-body); }
 .rw-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-bottom: 3rem;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
 }
 .rw-card { display: block; cursor: pointer; }
 
 /* The card IS the image — large, rounded, full-bleed */
 .rw-img-wrap {
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   position: relative;
 }
 .rw-img-thumb {
@@ -471,7 +471,16 @@ button { font-family: var(--font-body); }
   inset: 0;
   transition: transform 0.65s var(--ease);
 }
-.rw-card:hover .rw-img-thumb { transform: scale(1.04); }
+/* Gradient overlay for depth */
+.rw-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.28));
+  border-radius: 0 0 20px 20px;
+  pointer-events: none;
+}
+.rw-card:hover .rw-img-thumb { transform: scale(1.05); }
 .rw-img-1 .rw-img-thumb { background: linear-gradient(145deg, #d4b8ac, #b89080, #9c7468); }
 .rw-img-2 .rw-img-thumb { background: linear-gradient(145deg, #a8bece, #8aa0b8, #7090a8); }
 .rw-img-3 .rw-img-thumb { background: linear-gradient(145deg, #b8ceac, #98b890, #7ea078); }
@@ -496,29 +505,31 @@ button { font-family: var(--font-body); }
 
 /* Info below the image card */
 .rw-card-info {
-  padding: 1rem 0.5rem 0;
+  padding: 1.1rem 0.25rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
 .rw-card-meta {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 400;
   color: var(--ink-muted);
 }
 .rw-card-name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 .rw-cta { text-align: center; }
 
 @media (max-width: 900px) {
-  .rw-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .rw-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 }
 @media (max-width: 560px) {
-  .rw-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .rw-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .rw-img-wrap { aspect-ratio: 4/3; }
 }
 @media (max-width: 640px) {
   .rw-section { padding: 5.5rem 0; }
