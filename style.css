@@ -1746,44 +1746,6 @@ button { font-family: var(--font-body); }
 .refl-title { font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
 .refl-body { font-size: 0.82rem; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
 
-/* Reflection list (replaces refl-card grid) */
-.refl-list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-}
-.refl-item {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border);
-  align-items: start;
-}
-.refl-item:last-child { border-bottom: 1px solid var(--border); }
-.refl-item-num {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--ink-faint);
-  line-height: 1.1;
-  padding-top: 0.15rem;
-}
-.refl-item-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.45rem;
-  line-height: 1.35;
-}
-.refl-item-body {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--ink-muted);
-  line-height: 1.75;
-  margin: 0;
-}
-
 /* --- Outcome banner --- */
 .outcome-banner {
   background: var(--ink);
@@ -1955,8 +1917,6 @@ button { font-family: var(--font-body); }
   .testing-grid   { grid-template-columns: 1fr; }
   .playtest-grid  { grid-template-columns: 1fr; }
   .reflection-grid { grid-template-columns: 1fr; }
-  .refl-item { grid-template-columns: 3rem 1fr; gap: 1.25rem; padding: 1.5rem 0; }
-  .refl-item-num { font-size: 2rem; }
   .outcome-banner { grid-template-columns: 1fr; padding: 2.5rem 2rem; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
 }
