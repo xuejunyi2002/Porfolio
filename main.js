@@ -141,6 +141,7 @@ tabBtns.forEach(btn => {
   const descB      = document.getElementById('hsDescB');
   const photoWrap  = document.getElementById('hsPhotoWrap');
   const scrollHint = document.getElementById('hsScrollHint');
+  const tagsEl     = document.getElementById('hsTags');
   if (!container || !hsIm) return;
 
   const nameTrack = document.getElementById('hsNameTrack');
@@ -182,8 +183,10 @@ tabBtns.forEach(btn => {
     photoWrap.style.opacity = pp;
     photoWrap.style.transform = `translateX(${(1 - pp) * 3}rem)`;
 
-    /* scroll hint fades */
-    if (scrollHint) scrollHint.style.opacity = clamp(1 - p * 6, 0, 1);
+    /* scroll hint + tags fade out quickly */
+    const hintOpacity = clamp(1 - p * 6, 0, 1);
+    if (scrollHint) scrollHint.style.opacity = hintOpacity;
+    if (tagsEl)     tagsEl.style.opacity     = hintOpacity;
   }
 
   window.addEventListener('scroll', update, { passive: true });
