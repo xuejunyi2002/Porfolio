@@ -444,6 +444,10 @@ button { font-family: var(--font-body); }
   padding: 8rem 0;
   border-bottom: 1px solid var(--border);
 }
+.rw-section .container {
+  max-width: 1440px;
+  padding: 0 3rem;
+}
 .rw-top { margin-bottom: 3rem; }
 .rw-heading {
   font-size: clamp(2rem, 3.5vw, 2.9rem);
@@ -463,7 +467,7 @@ button { font-family: var(--font-body); }
 .rw-img-wrap {
   border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   position: relative;
 }
 .rw-img-thumb {
@@ -529,7 +533,6 @@ button { font-family: var(--font-body); }
 }
 @media (max-width: 560px) {
   .rw-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .rw-img-wrap { aspect-ratio: 4/3; }
 }
 @media (max-width: 640px) {
   .rw-section { padding: 5.5rem 0; }
